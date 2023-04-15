@@ -88,4 +88,32 @@ class Authentication {
       showSnackBar(context, e.toString());
     }
   }
+
+  Future<void> logInWithEmail({
+    required String email,
+    required String password,
+    required BuildContext context,
+  }) async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      if (_auth.currentUser!.emailVerified) {
+        //Get.to landing page
+      } else {
+        //Get.to "please verify account" page
+        signOut(context: context);
+      }
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
+
+  Future<void> signOut({
+    required BuildContext context,
+  }) async {
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
 }
