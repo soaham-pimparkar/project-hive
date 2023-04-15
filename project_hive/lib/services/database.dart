@@ -4,7 +4,9 @@ import 'package:project_hive/globals/widgets.dart';
 import 'package:project_hive/models/company_employee_model.dart';
 import 'package:project_hive/models/independent_user.dart';
 import 'package:project_hive/models/institute_faculty_model.dart';
+import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/models/student_model.dart';
+//import 'package:uuid/uuid.dart';
 
 class database {
   final _firestore = FirebaseFirestore.instance;
@@ -20,27 +22,23 @@ class database {
   }) async {
     dynamic userModel;
     String userType;
-    if(student != null){
+    if (student != null) {
       student.uid = useUid;
       userModel = student;
       userType = "students";
-    }
-    else if(companyEmployee != null){
+    } else if (companyEmployee != null) {
       companyEmployee.uid = useUid;
       userModel = companyEmployee;
       userType = "companyEmployee";
-    }
-    else if(institueFaculty != null){
+    } else if (institueFaculty != null) {
       institueFaculty.uid = useUid;
       userModel = institueFaculty;
       userType = "instituteFaculty";
-    }
-    else if(independentUser != null){
+    } else if (independentUser != null) {
       independentUser.uid = useUid;
       userModel = independentUser;
       userType = "independentUser";
-    }
-    else{
+    } else {
       throw Exception("Valid user type not found");
     }
     try {
@@ -51,4 +49,16 @@ class database {
   }
 
   //change user details
+
+  //create project
+  Future<void> createProjectRecord({
+    required BuildContext context,
+    required ProjectModel project,
+  }) async {
+    try {
+      await _firestore.doc("projects/${project.uid}").set(project.toMap());
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
 }

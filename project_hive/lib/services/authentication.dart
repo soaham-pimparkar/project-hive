@@ -116,4 +116,19 @@ class Authentication {
       showSnackBar(context, e.toString());
     }
   }
+
+  Future<String> getUserUid({required BuildContext context}) async {
+    try {
+      String useString = '';
+      if (_auth.currentUser == null) {
+        throw Exception('User is null');
+      } else {
+        useString = await _auth.currentUser!.uid;
+      }
+      return useString;
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return 'invalid uid';
+  }
 }

@@ -1,11 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project_hive/models/company_employee_model.dart';
+import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/models/student_model.dart';
 import 'package:project_hive/services/authentication.dart';
+import 'package:project_hive/services/database.dart';
+import 'package:uuid/uuid.dart';
 
 class testPage extends StatelessWidget {
   final authObj = Authentication();
+  final databaseObj = database();
   testPage({super.key});
 
   @override
@@ -61,6 +65,25 @@ class testPage extends StatelessWidget {
                           password: "inc2023",
                           context: context,
                           companyEmployee: useCompanyEmployee);
+                    },
+                    child: Text('Sign up companyEmployee')),
+                Spacer(),
+                FilledButton(
+                    onPressed: () async {
+                      var useUid = Uuid().v4();
+                      ProjectModel useProject = ProjectModel(
+                          projectType: 'project',
+                          title: 'Test Project',
+                          companyDetails: 'CRS',
+                          rewards: 'Rs 101',
+                          maxTeamSize: 4,
+                          minTeamSize: 1,
+                          uid: useUid,
+                          ownerUid: await authObj.getUserUid(context: context),//implement error handling while final code
+                          deadline:
+                              DateTime.now().add(const Duration(days: 5)));
+                      databaseObj.createProjectRecord(
+                          context: context, project: useProject);
                     },
                     child: Text('Sign up companyEmployee')),
                 Spacer(),

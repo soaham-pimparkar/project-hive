@@ -17,6 +17,7 @@ class StudentModel {
   String? experience;
   List<String>? interests;
   String? education;
+  //List<String> affiliatedProjects;
 
   StudentModel({
     required this.age,

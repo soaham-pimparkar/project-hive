@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:project_hive/globals/testPage.dart';
+import 'package:project_hive/screens/create_project_view/create_project_no_access.dart';
+import 'package:project_hive/screens/create_project_view/create_project_view.dart';
 import 'firebase_options.dart';
 
 //other pub.dev packages
@@ -25,22 +27,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('main.dart print called');
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrangeAccent),
         useMaterial3: true,
       ),
-      home: testPage(),
+      home: CreateProjectView(),
     );
-  }
-}
-
-class InitialWidgets extends StatelessWidget {
-  const InitialWidgets({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
