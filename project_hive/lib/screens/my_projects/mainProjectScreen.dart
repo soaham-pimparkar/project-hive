@@ -11,6 +11,8 @@ class StudentProjectView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("In StudentProjectView");
+    double heightMax = MediaQuery.of(context).size.height;
+    double widthMax = MediaQuery.of(context).size.width;
     return FutureBuilder<List<Map<dynamic, dynamic>>>(
       future: databaseObj.readSelectedProjects(useUid: uid, context: context),
       builder: (context, snapshot) {
@@ -49,34 +51,135 @@ class StudentProjectView extends StatelessWidget {
                             },
                           );
                         },
-                        child: Card(
-                          elevation: 5,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.all(16),
-                            decoration: BoxDecoration(
+                        child: Stack(
+                          children: [
+                            Card(
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                    color: Color.fromARGB(120, 31, 31, 31))),
-                            child: Column(
-                                // mainAxisAlignment: MainAxisAlignment.to,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    snapshot.data![index]["title"],
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  CardItem(
-                                      value:
-                                          "${snapshot.data![index]["companyDetails"]}"),
-                                ]),
-                          ),
+                              ),
+                              child: Container(
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: const Color.fromARGB(
+                                            120, 31, 31, 31))),
+                                child: Column(
+                                    // mainAxisAlignment: MainAxisAlignment.to,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        snapshot.data![index]["title"],
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(height: heightMax * 0.02),
+                                      const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Details: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: heightMax * 0.005),
+                                      TextField(
+                                        enabled: false,
+                                        decoration: InputDecoration(
+                                          border: const OutlineInputBorder(),
+                                          labelText: snapshot.data![index]
+                                              ["companyDetails"],
+                                          labelStyle: const TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: heightMax * 0.02),
+                                      const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Keywords: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: heightMax * 0.005),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          for (var key in snapshot.data![index]
+                                              ["keywords"])
+                                            Container(
+                                                padding:
+                                                    const EdgeInsets.all(4),
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    // color: Colors.blueAccent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                ),
+                                                child: Text('$key')),
+                                        ],
+                                      ),
+                                      SizedBox(height: heightMax * 0.02),
+                                      const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Rewards: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: heightMax * 0.005),
+                                      TextField(
+                                        enabled: false,
+                                        decoration: InputDecoration(
+                                          border: const OutlineInputBorder(),
+                                          labelText: snapshot.data![index]
+                                              ["rewards"],
+                                          labelStyle: const TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 20,
+                              right: 20,
+                              child: ElevatedButton(
+                                  child: const Text("View"),
+                                  onPressed: () => showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: InfoPopup(
+                                              info: snapshot.data![index],
+                                            ),
+                                          );
+                                        },
+                                      )),
+                            )
+                          ],
                         ),
                       );
                     },
@@ -123,8 +226,6 @@ class InfoPopup extends StatelessWidget {
                   width: 250,
                   height: 20,
                   child: ListTile(
-                    // dense: true,
-                    // horizontalTitleGap: 10,
                     leading: const CircleAvatar(
                       backgroundColor: Colors.black,
                       radius: 4,
@@ -246,7 +347,7 @@ class CardItem extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border.all(
               color: Colors.blueAccent,
@@ -256,7 +357,7 @@ class CardItem extends StatelessWidget {
           ),
           child: Text(
             value,
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           ),
         ),
       ],
