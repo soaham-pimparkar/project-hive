@@ -61,4 +61,29 @@ class database {
       showSnackBar(context, e.toString());
     }
   }
+
+  Future<List<Map<dynamic, dynamic>>> readSelectedProjects({
+    required String useUid,
+    required BuildContext context,
+  }) async {
+    List<Map<dynamic, dynamic>> applications = [];
+    try {
+      DocumentSnapshot studentInfo =
+          await _firestore.doc("/students/$useUid").get();
+      Map<dynamic, dynamic> temp = studentInfo.data() as Map<dynamic, dynamic>;
+      // Map<String, dynamic>.from(t1)
+      for (String uid in temp["appliedProjects"]) {
+        DocumentSnapshot<Map<String, dynamic>> t1 =
+            await _firestore.doc("/projects/$uid").get();
+        if (t1.exists && t1.data() != null) {
+          applications.add(Map<String, dynamic>.from(t1.data()!));
+        }
+      }
+      print("In function: $applications");
+      return applications;
+    } catch (e) {
+      showSnackBar(context, e.toString());
+      return [];
+    }
+  }
 }

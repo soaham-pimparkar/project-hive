@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:project_hive/controllers/input_controllers.dart';
 import 'package:project_hive/globals/widgets.dart';
 import 'package:project_hive/models/project_model.dart';
-import 'package:project_hive/screens/create_project_view/create_project_no_access.dart';
+// import 'package:project_hive/screens/create_project_view/create_project_no_access.dart';
 import 'package:project_hive/services/authentication.dart';
 import 'package:project_hive/services/database.dart';
 import 'package:uuid/uuid.dart';
@@ -38,8 +38,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Type:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.projectTypeCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.projectTypeCtr,
+                    ),
                   ),
                 ],
               ),
@@ -50,8 +52,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Title:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.titleCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.titleCtr,
+                    ),
                   ),
                 ],
               ),
@@ -62,8 +66,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Details:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.projectDetailsCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.projectDetailsCtr,
+                    ),
                   ),
                 ],
               ),
@@ -74,8 +80,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Company Details:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.companyDetailsCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.companyDetailsCtr,
+                    ),
                   ),
                 ],
               ),
@@ -86,8 +94,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Keywords:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.keywordsCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.keywordsCtr,
+                    ),
                   ),
                 ],
               ),
@@ -98,8 +108,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Days left for application:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.deadlineCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.deadlineCtr,
+                    ),
                   ),
                 ],
               ),
@@ -110,8 +122,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Minimum team size:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.minTeamSizeCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.minTeamSizeCtr,
+                    ),
                   ),
                 ],
               ),
@@ -122,8 +136,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Maximum team size:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.maxTeamSizeCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.maxTeamSizeCtr,
+                    ),
                   ),
                 ],
               ),
@@ -134,8 +150,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Mode:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.modeCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.modeCtr,
+                    ),
                   ),
                 ],
               ),
@@ -146,8 +164,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('location:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.locationCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.locationCtr,
+                    ),
                   ),
                 ],
               ),
@@ -158,8 +178,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Prerequisites:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.prerequisitesCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.prerequisitesCtr,
+                    ),
                   ),
                 ],
               ),
@@ -170,8 +192,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Responsibilities:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.responsibilitiesCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.responsibilitiesCtr,
+                    ),
                   ),
                 ],
               ),
@@ -182,8 +206,10 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   Text('Rewards:'),
                   SizedBox(width: 25),
-                  TextFormField(
-                    controller: _inputCtr.rewardsCtr,
+                  Expanded(
+                    child: TextFormField(
+                      controller: _inputCtr.rewardsCtr,
+                    ),
                   ),
                 ],
               ),
@@ -216,8 +242,9 @@ class CreateProjectView extends StatelessWidget {
           ),
         ),
       );
-    } else {
-      return CreateProjectNoAccessView();
     }
+    // else {
+    //   return CreateProjectNoAccessView();
+    // }
   }
 }
