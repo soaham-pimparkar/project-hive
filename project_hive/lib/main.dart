@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
       //   uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
       // ),
       home: StudentProjectView(
-          // uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
-          ),
+        uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
+      ),
     );
   }
 }
