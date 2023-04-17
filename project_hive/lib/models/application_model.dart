@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-/*class ApplicationModel {
+class ApplicationModel {
   String? projectDetails;
   String projectType;
   String? mode;
@@ -83,4 +83,3 @@ import 'dart:convert';
     return ApplicationModel.fromMap(json.decode(source));
   }
 }
-*/

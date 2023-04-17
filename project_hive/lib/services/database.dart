@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:project_hive/globals/widgets.dart';
+import 'package:project_hive/models/application_model.dart';
 import 'package:project_hive/models/company_employee_model.dart';
 import 'package:project_hive/models/independent_user.dart';
 import 'package:project_hive/models/institute_faculty_model.dart';
@@ -57,6 +58,38 @@ class database {
   }) async {
     try {
       await _firestore.doc("projects/${project.uid}").set(project.toMap());
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
+
+  Future<void> createApplicationRecord(
+      {required BuildContext context,
+      required ApplicationModel application,
+      required String projectUid,
+      required String studentUid}) async {
+    try {
+      //add application record in project subcollection
+      await _firestore
+          .doc("projects/$projectUid/${application.uid}")
+          .set(application.toMap());
+
+      //add application uid in student
+      List<String> useArray = [];
+      final docRef = _firestore.collection("students").doc("$studentUid");
+      docRef.get().then(
+        (DocumentSnapshot doc) {
+          final data = doc.data() as Map<String, dynamic>;
+          useArray = data['affiliatedProjects'];
+        },
+        onError: (e) => print("Error getting document: $e"),
+      );
+      useArray.add('${application.uid}');
+      await _firestore
+          .doc("students/$studentUid")
+          .update({'affiliatedProjects': '$useArray'});
+
+      //add application uid in owner
     } catch (e) {
       showSnackBar(context, e.toString());
     }
