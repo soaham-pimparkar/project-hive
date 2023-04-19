@@ -14,6 +14,8 @@ class IndependentUserModel {
   String? profilePhoto;
   String? uid;
   String username;
+  List<String>? myProjects;
+  String accountType;
 
   IndependentUserModel({
     required this.age,
@@ -29,6 +31,8 @@ class IndependentUserModel {
     this.location,
     this.phoneNumber,
     this.profilePhoto,
+    this.myProjects,
+    this.accountType = 'independentUser',
   });
 
   Map<String, dynamic> toMap() {
@@ -46,6 +50,8 @@ class IndependentUserModel {
       'uid': uid,
       'profilePhoto': profilePhoto,
       'username': username,
+      'myProjects': myProjects,
+      'accountType' : accountType,
     };
   }
 
@@ -64,6 +70,8 @@ class IndependentUserModel {
       profilePhoto: map['profilePhoto'] ?? '',
       uid: map['uid'] ?? '',
       username: map['username'] ?? '',
+      myProjects: map['myProjects'] ?? [],
+      accountType: map['accountType'] ?? '',
     );
   }
 

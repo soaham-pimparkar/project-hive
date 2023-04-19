@@ -17,7 +17,8 @@ class StudentModel {
   String? experience;
   List<String>? interests;
   String? education;
-  //List<String> affiliatedProjects;
+  List<String>? myApplications;
+  String accountType;
 
   StudentModel({
     required this.age,
@@ -36,6 +37,8 @@ class StudentModel {
     this.experience,
     this.interests,
     this.education,
+    this.myApplications,
+    this.accountType = 'student',
   });
 
   Map<String, dynamic> toMap() {
@@ -56,6 +59,8 @@ class StudentModel {
       'education': education,
       'interests': interests,
       'experience': experience,
+      'myApplications': myApplications,
+      'accountType' : accountType,
     };
   }
 
@@ -77,6 +82,8 @@ class StudentModel {
       education: map['education'] ?? '',
       interests: map['interests'] ?? [],
       experience: map['experience'] ?? '',
+      myApplications: map['myApplications'] ?? [],
+      accountType: map['accountType'] ?? '',
     );
   }
 

@@ -16,6 +16,8 @@ class ProjectModel {
   int? minTeamSize;
   int? maxTeamSize;
   String ownerUid;
+  List<String>? receivedApplications;
+  
 
   ProjectModel({
     required this.projectType,
@@ -33,6 +35,7 @@ class ProjectModel {
     this.maxTeamSize,
     this.minTeamSize,
     required this.ownerUid,
+    this.receivedApplications,
   });
 
   Map<String, dynamic> toMap() {
@@ -52,6 +55,7 @@ class ProjectModel {
       'maxTeamSize': maxTeamSize,
       'minTeamSize': minTeamSize,
       'ownerUid': ownerUid,
+      'receivedApplications': receivedApplications,
     };
   }
 
@@ -70,6 +74,7 @@ class ProjectModel {
       rewards: map['rewards'] ?? '',
       deadline: map['deadline'] ?? DateTime.now(),
       ownerUid: map['ownerUid'] ?? '',
+      receivedApplications: map['receivedApplications'] ?? [],
     );
   }
 

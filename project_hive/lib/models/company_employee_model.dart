@@ -17,6 +17,8 @@ class CompanyEmployeeModel {
   String companyName;
   String role;
   String? aboutCompany;
+  List<String>? myProjects;
+  String accountType;
 
   CompanyEmployeeModel({
     required this.age,
@@ -35,6 +37,8 @@ class CompanyEmployeeModel {
     this.aboutCompany,
     required this.companyName,
     required this.role,
+    this.myProjects,
+    this.accountType = 'companyEmployee',
   });
 
   Map<String, dynamic> toMap() {
@@ -55,6 +59,8 @@ class CompanyEmployeeModel {
       'companyName': companyName,
       'role': role,
       'aboutCompany': aboutCompany,
+      'myProjects': myProjects,
+      'accountType' : accountType,
     };
   }
 
@@ -76,6 +82,8 @@ class CompanyEmployeeModel {
       companyName: map['companyName'] ?? '',
       aboutCompany: map['aboutCompany'] ?? '',
       role: map['role'] ?? '',
+      myProjects: map['myProjects'] ?? [],
+      accountType: map['accountType'] ?? '',
     );
   }
 

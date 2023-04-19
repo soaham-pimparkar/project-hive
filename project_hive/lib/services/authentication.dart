@@ -10,9 +10,10 @@ import 'package:project_hive/models/institute_faculty_model.dart';
 import 'package:project_hive/models/student_model.dart';
 import 'package:project_hive/services/database.dart';
 
+final _database = database();
 class Authentication {
-  //final database _database;
-  database _database = database();
+  
+  //database _database = database();
   final _auth = FirebaseAuth.instance;
 
   //Authentication();
@@ -97,6 +98,7 @@ class Authentication {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       if (_auth.currentUser!.emailVerified) {
+        print('logged in as $email');
         //Get.to landing page
       } else {
         //Get.to "please verify account" page

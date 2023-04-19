@@ -1,79 +1,55 @@
 import 'dart:convert';
 
 class ApplicationModel {
-  String? projectDetails;
-  String projectType;
+  String background;
   String? mode;
-  String title;
-  List<String>? keywords;
+  String appeal;
   String? location;
-  String companyDetails;
-  String? prerequisites;
-  String? responsibilities;
   String uid;
-  String rewards;
-  DateTime? deadline;
+  String extraComments;
   int? teamSize;
-  int? maxTeamSize;
-  String ownerUid;
+  //String ownerUid;
   String projectUid;
+  List<Map<String, String>> members;
 
-  ApplicationModel({
-    required this.projectType,
-    required this.title,
-    required this.companyDetails,
-    required this.uid,
-    this.projectDetails,
-    this.mode,
-    this.keywords,
-    this.location,
-    this.prerequisites,
-    this.responsibilities,
-    required this.rewards,
-    required this.deadline,
-    this.maxTeamSize,
-    this.teamSize,
-    required this.ownerUid,
-    required this.projectUid
-  });
+  ApplicationModel(
+     {required this.appeal,
+      required this.uid,
+      required this.background,
+      this.mode,
+      this.location,
+      required this.extraComments,
+      this.teamSize,
+      //required this.ownerUid,
+      required this.projectUid,
+      required this.members});
 
   Map<String, dynamic> toMap() {
     return {
-      'projectDetails': projectDetails,
-      'projectType': projectType,
+      'background': background,
       'mode': mode,
-      'title': title,
-      'keywords': keywords,
+      'appeal': appeal,
       'location': location,
-      'companyDetails': companyDetails,
-      'prerequisites': prerequisites,
       'uid': uid,
-      'responsibilities': responsibilities,
-      'rewards': rewards,
-      'deadline': deadline,
-      'maxTeamSize': maxTeamSize,
+      'extraComments': extraComments,
       'teamSize': teamSize,
-      'ownerUid': ownerUid,
+      //'ownerUid': ownerUid,
       'projectUid': projectUid,
+      'members': members,
     };
   }
 
   factory ApplicationModel.fromMap(Map<String, dynamic> map) {
     return ApplicationModel(
-      projectDetails: map['projectDetails'] ?? '',
-      projectType: map['projectType'] ?? '',
+      background: map['background'] ?? '',
       mode: map['mode'] ?? '',
-      title: map['title'] ?? '',
-      keywords: map['keywords'] ?? [],
+      appeal: map['appeal'] ?? '',
       location: map['location'] ?? '',
-      companyDetails: map['companyDetails'] ?? '',
-      prerequisites: map['prerequisites'] ?? '',
-      responsibilities: map['responsibilities'] ?? '',
       uid: map['uid'] ?? '',
-      rewards: map['rewards'] ?? '',
-      deadline: map['deadline'] ?? DateTime.now(),
-      ownerUid: map['ownerUid'] ?? '',
+      extraComments: map['extraComments'] ?? '',
+      //ownerUid: map['ownerUid'] ?? '',
       projectUid: map['projectUid'] ?? '',
+      members: map['members'] ?? [],
     );
   }
 

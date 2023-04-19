@@ -17,6 +17,8 @@ class InstituteFacultyModel {
   String institute;
   String position;
   String? aboutInstitute;
+  List<String>? myProjects;
+  String accountType;
 
   InstituteFacultyModel({
     required this.age,
@@ -35,6 +37,8 @@ class InstituteFacultyModel {
     required this.institute,
     required this.position,
     this.aboutInstitute,
+    this.myProjects,
+    this.accountType = 'instituteFaculty',
   });
 
   Map<String, dynamic> toMap() {
@@ -55,6 +59,8 @@ class InstituteFacultyModel {
       'aboutInstitute': aboutInstitute,
       'position': position,
       'institute': institute,
+      'myProjects': myProjects,
+      'accountType' : accountType,
     };
   }
 
@@ -76,6 +82,8 @@ class InstituteFacultyModel {
       aboutInstitute: map['aboutInstitute'] ?? '',
       position: map['position'] ?? '',
       institute: map['institute'] ?? '',
+      myProjects: map['myProjects'] ?? [],
+      accountType: map['accountType'] ?? '',
     );
   }
 

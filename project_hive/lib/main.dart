@@ -1,15 +1,19 @@
 //firebase packages
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:project_hive/globals/testPage.dart';
-import 'package:project_hive/screens/create_project_view/create_project_no_access.dart';
 import 'package:project_hive/screens/create_project_view/create_project_view.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:project_hive/globals/testPage.dart';
+// import 'package:project_hive/screens/create_project_view/create_project_no_access.dart';
+// import 'package:project_hive/screens/create_project_view/create_project_view.dart';
+import 'package:project_hive/screens/my_projects/mainProjectScreen.dart';
+import 'package:project_hive/screens/profile_view/profile.dart';
 import 'firebase_options.dart';
 
 //other pub.dev packages
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 //local files
 import 'package:flutter/material.dart';
@@ -27,14 +31,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('main.dart print called');
+    //print('main.dart print called');
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrangeAccent),
         useMaterial3: true,
       ),
-      home: CreateProjectView(),
+      // home: StudentProjectView(
+      //   uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
+      // ),
+      // home: StudentProjectView(
+      //   uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
+      // ),
+      home: testPage(),
     );
   }
 }
