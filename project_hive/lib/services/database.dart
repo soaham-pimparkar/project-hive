@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:js_interop';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:project_hive/globals/widgets.dart';
@@ -181,5 +184,13 @@ class database {
       showSnackBar(context, e.toString());
       return [];
     }
+  }
+
+  Future<List<ProjectModel>> readAllProjects() async {
+    final collectionRef = FirebaseFirestore.instance.collection('projects');
+    final snapshot = await collectionRef.get();
+    final projects =
+        snapshot.docs.map((doc) => ProjectModel.fromMap(doc.data())).toList();
+    return projects;
   }
 }

@@ -223,13 +223,15 @@ class CreateProjectView extends StatelessWidget {
                       DateTime useDateTime = DateTime.now().add(Duration(
                           days: int.parse(_inputCtr.deadlineCtr.text)));
                       final useProject = ProjectModel(
-                          projectType: _inputCtr.projectTypeCtr.text,
-                          title: _inputCtr.titleCtr.text,
-                          companyDetails: _inputCtr.companyDetailsCtr.text,
-                          uid: useUid,
-                          rewards: _inputCtr.rewardsCtr.text,
-                          deadline: useDateTime,
-                          ownerUid: useOwnerUid);
+                        projectType: _inputCtr.projectTypeCtr.text,
+                        title: _inputCtr.titleCtr.text,
+                        companyDetails: _inputCtr.companyDetailsCtr.text,
+                        uid: useUid,
+                        rewards: _inputCtr.rewardsCtr.text,
+                        deadline: useDateTime,
+                        ownerUid: useOwnerUid,
+                        keywords: [],
+                      );
                       await databaseObj.createProjectRecord(
                           context: context, project: useProject);
                       showSnackBar(context, 'Project successfully created!');

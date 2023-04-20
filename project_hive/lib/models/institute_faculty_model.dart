@@ -60,7 +60,7 @@ class InstituteFacultyModel {
       'position': position,
       'institute': institute,
       'myProjects': myProjects,
-      'accountType' : accountType,
+      'accountType': accountType,
     };
   }
 
@@ -93,7 +93,6 @@ class InstituteFacultyModel {
     return InstituteFacultyModel.fromMap(json.decode(source));
   }
 }
-
 
 //previous constuctor for student model:
 /*InstituteFacultyModel({

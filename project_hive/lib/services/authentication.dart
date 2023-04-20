@@ -11,8 +11,8 @@ import 'package:project_hive/models/student_model.dart';
 import 'package:project_hive/services/database.dart';
 
 final _database = database();
+
 class Authentication {
-  
   //database _database = database();
   final _auth = FirebaseAuth.instance;
 

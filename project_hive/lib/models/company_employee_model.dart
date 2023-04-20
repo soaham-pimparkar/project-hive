@@ -60,7 +60,7 @@ class CompanyEmployeeModel {
       'role': role,
       'aboutCompany': aboutCompany,
       'myProjects': myProjects,
-      'accountType' : accountType,
+      'accountType': accountType,
     };
   }
 
@@ -93,7 +93,6 @@ class CompanyEmployeeModel {
     return CompanyEmployeeModel.fromMap(json.decode(source));
   }
 }
-
 
 //previous constuctor for student model:
 /*StudentModel({

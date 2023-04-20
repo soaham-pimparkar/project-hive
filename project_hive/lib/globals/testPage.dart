@@ -83,6 +83,7 @@ class testPage extends StatelessWidget {
                           maxTeamSize: 4,
                           minTeamSize: 1,
                           uid: useUid,
+                          keywords: [],
                           ownerUid: await authObj.getUserUid(
                               context:
                                   context), //implement error handling while final code

@@ -60,7 +60,7 @@ class StudentModel {
       'interests': interests,
       'experience': experience,
       'myApplications': myApplications,
-      'accountType' : accountType,
+      'accountType': accountType,
     };
   }
 
@@ -93,7 +93,6 @@ class StudentModel {
     return StudentModel.fromMap(json.decode(source));
   }
 }
-
 
 //previous constuctor for student model:
 /*StudentModel({

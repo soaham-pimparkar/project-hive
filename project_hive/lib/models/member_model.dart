@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class MemberModel{
+class MemberModel {
   String name;
   String? phoneNumber;
   String emailid;
