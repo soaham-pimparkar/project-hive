@@ -18,7 +18,7 @@ class ProjectModel {
   int? minTeamSize;
   int? maxTeamSize;
   String ownerUid;
-  List<String>? receivedApplications;
+  List<dynamic>? receivedApplications;
 
   ProjectModel({
     required this.projectType,
