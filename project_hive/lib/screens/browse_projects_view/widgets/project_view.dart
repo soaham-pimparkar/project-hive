@@ -14,7 +14,7 @@ class ProjectView extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
@@ -218,7 +218,7 @@ class ProjectView extends StatelessWidget {
                 onPressed: () {
                   Get.toNamed('/application');
                 },
-                child: Text('Apply For Project'),
+                child: const Text('Apply For Project'),
               )
             ],
           ),

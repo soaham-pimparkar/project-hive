@@ -3,12 +3,7 @@ import 'package:get/get.dart';
 import 'package:project_hive/controllers/input_controllers.dart';
 import 'package:project_hive/globals/appBar.dart';
 import 'package:project_hive/globals/widgets.dart';
-import 'package:project_hive/models/company_employee_model.dart';
-import 'package:project_hive/models/independent_user.dart';
-import 'package:project_hive/models/institute_faculty_model.dart';
-import 'package:project_hive/models/student_model.dart';
 import 'package:project_hive/services/authentication.dart';
-import 'package:uuid/uuid.dart';
 
 final _inputCtr = Get.put(userInputController());
 final authObj = Authentication();
@@ -19,7 +14,7 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,7 +27,7 @@ class SignInView extends StatelessWidget {
               onPressed: () {
                 Get.toNamed('/signUpPage');
               },
-              child: Text('Sign Up instead')),
+              child: const Text('Sign Up instead')),
           const SizedBox(height: 25),
           //sign up form
           formFieldRow(
@@ -51,7 +46,7 @@ class SignInView extends StatelessWidget {
                     context: context);
                 Get.toNamed('/');
               },
-              child: Text('Log in'))
+              child: const Text('Log in'))
         ],
       ),
     );

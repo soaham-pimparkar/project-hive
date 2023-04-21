@@ -21,11 +21,11 @@ class CreateProjectView extends StatelessWidget {
   Widget build(BuildContext context) {
     //print('before if true called');
     if (databaseObj.getAccountType(context: context) == 'students') {
-      return CreateProjectNoAccessView();
+      return const CreateProjectNoAccessView();
     } else {
       //print('if true called, before returning scaffold');
       return Scaffold(
-        appBar: CustomAppBar(),
+        appBar: const CustomAppBar(),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

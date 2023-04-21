@@ -8,7 +8,7 @@ class VerifyEmailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(), //replace with default bar later
+        appBar: const CustomAppBar(), //replace with default bar later
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

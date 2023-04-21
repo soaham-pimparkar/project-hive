@@ -1,12 +1,9 @@
 import 'dart:developer';
 
-import 'dart:convert';
-import 'dart:js_interop';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:project_hive/globals/widgets.dart';
-import 'package:project_hive/models/application_model.dart';
 import 'package:project_hive/models/company_employee_model.dart';
 import 'package:project_hive/models/independent_user.dart';
 import 'package:project_hive/models/institute_faculty_model.dart';
@@ -128,6 +125,7 @@ class database {
     } catch (e) {
       showSnackBar(context, e.toString());
     }
+    return null;
   }
 
 /*

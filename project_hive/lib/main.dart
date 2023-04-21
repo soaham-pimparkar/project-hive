@@ -1,8 +1,6 @@
-import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:project_hive/globals/testPage.dart';
 import 'package:project_hive/screens/authentication_view/sign_in_view.dart';
 import 'package:project_hive/screens/authentication_view/sign_up_view.dart';
 import 'package:project_hive/screens/authentication_view/verify_email_view.dart';
@@ -45,15 +43,15 @@ class MyApp extends StatelessWidget {
       // ),
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', title: 'Home', page: () => LandingView()),
+        GetPage(name: '/', title: 'Home', page: () => const LandingView()),
         GetPage(
-            name: '/signUpPage', title: 'Sign Up', page: () => SignUpView()),
+            name: '/signUpPage', title: 'Sign Up', page: () => const SignUpView()),
         GetPage(
-            name: '/signInPage', title: 'Sign In', page: () => SignInView()),
+            name: '/signInPage', title: 'Sign In', page: () => const SignInView()),
         GetPage(
             name: '/verifyEmailPage',
             title: 'Verify Email',
-            page: () => VerifyEmailView()),
+            page: () => const VerifyEmailView()),
         GetPage(
             name: '/createProjectPage',
             title: 'Create Project',
@@ -65,7 +63,7 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: '/myProfilePage',
             title: 'My Profile',
-            page: () => myProfileView()),
+            page: () => const myProfileView()),
         GetPage(
             name: '/myResources',
             title: 'My Projects',
@@ -74,7 +72,7 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: '/editProfilePage',
             title: 'Edit Profile',
-            page: () => editProfileView()),
+            page: () => const editProfileView()),
         GetPage(
             name: '/application', title: 'Apply', page: () => TeamApplyPage()),
       ],

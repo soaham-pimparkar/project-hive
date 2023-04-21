@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:project_hive/globals/appBar.dart';
 import 'package:project_hive/globals/drawer.dart';
@@ -44,7 +43,7 @@ class Screen1 extends StatelessWidget {
           Container(
             height: heightMax,
             width: widthMax * 0.5,
-            decoration: BoxDecoration(color: Colors.transparent),
+            decoration: const BoxDecoration(color: Colors.transparent),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -161,7 +160,7 @@ class Screen2 extends StatelessWidget {
             width: widthMax / 2.04,
             decoration: const BoxDecoration(color: Colors.transparent),
             child: Center(
-              child: Container(
+              child: SizedBox(
                 width: (widthMax / 2.04) * 0.75,
                 child: Text(
                   """Project Hive is a student-focused startup that connects talented individuals with companies and other organizations.
@@ -234,13 +233,13 @@ It is a long established fact that a reader will be distracted by the readable c
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                 width: 100,
                 height: 100,
                 child: IconButton(

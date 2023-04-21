@@ -20,7 +20,7 @@ class TeamApplyPage extends StatelessWidget {
     log("Controller: $controller_");
     log("Initial Team Size: ${controller_.teamSize.value}");
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -58,7 +58,7 @@ class TeamApplyPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,7 +72,7 @@ class TeamApplyPage extends StatelessWidget {
                     child: const Text("Submit")),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),

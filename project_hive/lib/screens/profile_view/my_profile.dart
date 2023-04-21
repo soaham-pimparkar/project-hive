@@ -3,10 +3,8 @@ import 'package:get/get.dart';
 import 'package:project_hive/controllers/input_controllers.dart';
 import 'package:project_hive/globals/appBar.dart';
 import 'package:project_hive/globals/widgets.dart';
-import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/services/authentication.dart';
 import 'package:project_hive/services/database.dart';
-import 'package:uuid/uuid.dart';
 
 database databaseObj = database();
 Authentication authObj = Authentication();
@@ -18,7 +16,7 @@ class myProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -296,26 +294,26 @@ class myProfileView extends StatelessWidget {
                       ],
                     );
                   } else {
-                    return Text('Invalid User type detected');
+                    return const Text('Invalid User type detected');
                   }
                 } else {
-                  return Text('No data fetched');
+                  return const Text('No data fetched');
                 }
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             FilledButton(
                 onPressed: () {
                   Get.toNamed('/editProfilePage');
                 },
-                child: Text('Edit Profile')),
-            SizedBox(height: 20),
+                child: const Text('Edit Profile')),
+            const SizedBox(height: 20),
             FilledButton(
                 onPressed: () {
                   Get.toNamed('/myResources');
                 },
-                child: Text('My Projects/ Applications')),
-            SizedBox(height: 20),
+                child: const Text('My Projects/ Applications')),
+            const SizedBox(height: 20),
           ],
         ),
       ),

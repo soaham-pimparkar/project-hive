@@ -3,14 +3,13 @@ import 'package:project_hive/models/company_employee_model.dart';
 import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/models/student_model.dart';
 import 'package:project_hive/screens/profile_view/edit_profile.dart';
-import 'package:project_hive/screens/profile_view/my_profile.dart';
 import 'package:project_hive/services/authentication.dart';
 import 'package:project_hive/services/database.dart';
 import 'package:uuid/uuid.dart';
 import 'package:get/get.dart';
 
 class testPage extends StatelessWidget {
-  testPage({super.key});
+  const testPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +91,8 @@ class testPage extends StatelessWidget {
                       databaseObj.createProjectRecord(
                           context: context, project: useProject);
                     },
-                    child: Text('create project')),
-                Spacer(),
+                    child: const Text('create project')),
+                const Spacer(),
                 // FilledButton(
                 //     onPressed: () async {
                 //       String? temp =
@@ -109,8 +108,8 @@ class testPage extends StatelessWidget {
                           password: 'inc2023',
                           context: context);
                     },
-                    child: Text('log in')),
-                Spacer(),
+                    child: const Text('log in')),
+                const Spacer(),
                 // FilledButton(
                 //     onPressed: () async {
                 //       databaseObj.getUserData(context: context);
@@ -119,10 +118,10 @@ class testPage extends StatelessWidget {
                 // Spacer(),
                 FilledButton(
                     onPressed: () {
-                      Get.to(editProfileView());
+                      Get.to(const editProfileView());
                     },
-                    child: Text('Navigate')),
-                Spacer(),
+                    child: const Text('Navigate')),
+                const Spacer(),
               ],
             )
           ]),

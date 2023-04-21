@@ -27,7 +27,7 @@ class StudentProjectView extends StatelessWidget {
                 primarySwatch: Colors.blue,
               ),
               home: Scaffold(
-                appBar: CustomAppBar(),
+                appBar: const CustomAppBar(),
                 body: Center(
                   child: GridView.builder(
                     gridDelegate:

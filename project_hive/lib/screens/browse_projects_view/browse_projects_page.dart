@@ -15,7 +15,7 @@ class BrowseProjectsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     browseProjectsPageController.getProjects();
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

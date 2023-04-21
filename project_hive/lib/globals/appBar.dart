@@ -7,7 +7,7 @@ import 'package:project_hive/globals/themes/app_colors.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
@@ -54,16 +54,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          /*Image.network(
-            "https://as2.ftcdn.net/v2/jpg/04/84/43/55/1000_F_484435594_6UxpXm1RtQvNnME06g6764sFRL8KAwib.jpg",
-            height: 40,
-            fit: BoxFit.contain,
-          ),*/
           IconButton(
             onPressed: () {
               Get.toNamed('/');
             },
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
           ),
           SizedBox(width: useWidth / 20),
           Text(

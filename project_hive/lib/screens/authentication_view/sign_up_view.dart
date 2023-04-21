@@ -19,7 +19,7 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -34,7 +34,7 @@ class SignUpView extends StatelessWidget {
                   onPressed: () {
                     Get.toNamed('/signInPage');
                   },
-                  child: Text('Sign in instead')),
+                  child: const Text('Sign in instead')),
               const SizedBox(height: 25),
               //sign up form
               formFieldRow(
@@ -134,12 +134,12 @@ class SignUpView extends StatelessWidget {
                       username: _inputCtr.usernameCtr.text,
                       description: _inputCtr.descriptionCtr.text,
                       location: _inputCtr.locationCtr.text,
-                      links: ['${_inputCtr.linksCtr.text}'],
-                      interests: ['${_inputCtr.interestsCtr.text}'],
+                      links: [(_inputCtr.linksCtr.text)],
+                      interests: [(_inputCtr.interestsCtr.text)],
                       phoneNumber: _inputCtr.phoneNumberCtr.text,
                       experience: _inputCtr.experienceCtr.text,
                       education: _inputCtr.educationCtr.text,
-                      uid: Uuid().v4(),
+                      uid: const Uuid().v4(),
                       accountType: 'students',
                       //profile photo, idcard
                       // idCard: snapshot.data?['idCard'],// please update
@@ -163,9 +163,9 @@ class SignUpView extends StatelessWidget {
                       username: _inputCtr.usernameCtr.text,
                       description: _inputCtr.descriptionCtr.text,
                       location: _inputCtr.locationCtr.text,
-                      links: ['${_inputCtr.linksCtr.text}'],
+                      links: [(_inputCtr.linksCtr.text)],
                       phoneNumber: _inputCtr.phoneNumberCtr.text,
-                      uid: Uuid().v4(),
+                      uid: const Uuid().v4(),
                       companyName: _inputCtr.companyNameCtr.text,
                       aboutCompany: _inputCtr.aboutCompanyCtr.text,
                       role: _inputCtr.roleCtr.text,
@@ -192,9 +192,9 @@ class SignUpView extends StatelessWidget {
                       username: _inputCtr.usernameCtr.text,
                       description: _inputCtr.descriptionCtr.text,
                       location: _inputCtr.locationCtr.text,
-                      links: ['${_inputCtr.linksCtr.text}'],
+                      links: [(_inputCtr.linksCtr.text)],
                       phoneNumber: _inputCtr.phoneNumberCtr.text,
-                      uid: Uuid().v4(),
+                      uid: const Uuid().v4(),
                       institute: _inputCtr.instituteCtr.text,
                       aboutInstitute: _inputCtr.aboutInstituteCtr.text,
                       position: _inputCtr.positionCtr.text,
@@ -221,9 +221,9 @@ class SignUpView extends StatelessWidget {
                       username: _inputCtr.usernameCtr.text,
                       description: _inputCtr.descriptionCtr.text,
                       location: _inputCtr.locationCtr.text,
-                      links: ['${_inputCtr.linksCtr.text}'],
+                      links: [(_inputCtr.linksCtr.text)],
                       phoneNumber: _inputCtr.phoneNumberCtr.text,
-                      uid: Uuid().v4(),
+                      uid: const Uuid().v4(),
                       accountType: 'independentUser',
                       //profile photo, idcard
                       // idCard: snapshot.data?['idCard'],// please update
@@ -243,7 +243,7 @@ class SignUpView extends StatelessWidget {
                   }
                   Get.toNamed('/verifyEmailPage');
                 },
-                child: Text('Create Account'),
+                child: const Text('Create Account'),
               ),
             ]),
       ),

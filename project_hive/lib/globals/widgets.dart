@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 void showSnackBar(
     /*int? time,
@@ -45,8 +44,8 @@ class formFieldRow extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('$useText'),
-        SizedBox(width: 25),
+        Text(useText),
+        const SizedBox(width: 25),
         Expanded(
           child: TextFormField(
             //initialValue: initialText,
@@ -65,6 +64,6 @@ AppBar myAppBar = AppBar(
       onPressed: () {
         //Get.toNamed('/');
       },
-      icon: Icon(Icons.home)),
+      icon: const Icon(Icons.home)),
       
 );

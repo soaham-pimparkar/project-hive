@@ -3,11 +3,9 @@ import 'package:get/get.dart';
 import 'package:project_hive/controllers/input_controllers.dart';
 import 'package:project_hive/globals/appBar.dart';
 import 'package:project_hive/globals/widgets.dart';
-import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/models/student_model.dart';
 import 'package:project_hive/services/authentication.dart';
 import 'package:project_hive/services/database.dart';
-import 'package:uuid/uuid.dart';
 
 database databaseObj = database();
 Authentication authObj = Authentication();
@@ -19,7 +17,7 @@ class editProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -90,7 +88,7 @@ class editProfileView extends StatelessWidget {
                             useController: _inputCtr.experienceCtr,
                             useText: 'My Experience',
                             initialText: snapshot.data?['experience']),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         FilledButton(
                             onPressed: () async {
                               final data = snapshot.data;
@@ -117,10 +115,10 @@ class editProfileView extends StatelessWidget {
                                     : _inputCtr.locationCtr.text,
                                 links: _inputCtr.linksCtr.text.isEmpty
                                     ? data!['links']
-                                    : ['${_inputCtr.linksCtr.text}'],
+                                    : [(_inputCtr.linksCtr.text)],
                                 interests: _inputCtr.interestsCtr.text.isEmpty
                                     ? data!['interests']
-                                    : ['${_inputCtr.interestsCtr.text}'],
+                                    : [(_inputCtr.interestsCtr.text)],
                                 phoneNumber:
                                     _inputCtr.phoneNumberCtr.text.isEmpty
                                         ? data!['phoneNumber']
@@ -144,13 +142,13 @@ class editProfileView extends StatelessWidget {
                                   student: useStudent);
                               //Submit data to firebase
                             },
-                            child: Text('Submit')),
-                        SizedBox(height: 20),
+                            child: const Text('Submit')),
+                        const SizedBox(height: 20),
                         FilledButton(
                             onPressed: () {
                               Get.toNamed('myProfilePage');
                             },
-                            child: Text('Discard'))
+                            child: const Text('Discard'))
                       ],
                     );
                   } else if (snapshot.data?['accountType'] ==
@@ -316,10 +314,10 @@ class editProfileView extends StatelessWidget {
                       ],
                     );
                   } else {
-                    return Text('Invalid User type detected');
+                    return const Text('Invalid User type detected');
                   }
                 } else {
-                  return Text('No data fetched');
+                  return const Text('No data fetched');
                 }
               },
             ),
