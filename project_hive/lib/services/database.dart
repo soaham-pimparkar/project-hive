@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:project_hive/globals/widgets.dart';
@@ -6,7 +7,10 @@ import 'package:project_hive/models/independent_user.dart';
 import 'package:project_hive/models/institute_faculty_model.dart';
 import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/models/student_model.dart';
-//import 'package:uuid/uuid.dart';
+import 'package:project_hive/services/authentication.dart';
+import 'package:uuid/uuid.dart';
+
+final _auth = Authentication();
 
 class database {
   final _firestore = FirebaseFirestore.instance;
@@ -85,6 +89,21 @@ class database {
       showSnackBar(context, e.toString());
       return [];
     }
+  }
+
+  Future<void> makeNewApplication(Map<String, dynamic> data,
+      BuildContext context, String projectUid) async {
+    String applicantUid = await _auth.getUserUid(context: context);
+    String applicationUid = Uuid().v4();
+
+    await _firestore.doc("projects/$projectUid").update({
+      "receivedApplications": FieldValue.arrayUnion([applicationUid])
+    });
+    await _firestore.doc("applications/$applicationUid").set(data);
+
+    await _firestore.doc("students/$applicantUid").update({
+      "appliedProjects": FieldValue.arrayUnion([applicationUid])
+    });
   }
 
   Future<List<Map<dynamic, dynamic>>> getProjectDetails({

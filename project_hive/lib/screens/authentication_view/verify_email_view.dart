@@ -12,9 +12,9 @@ class VerifyEmailView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                   'Verification email has been sent to your email accout.... Please verify in order to log in'),
-              FilledButton(onPressed: () {}, child: Text('Open Gmail'))
+              FilledButton(onPressed: () {}, child: const Text('Open Gmail'))
             ],
           ),
         ));
