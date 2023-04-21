@@ -16,6 +16,9 @@ class TeamApplyPage extends StatelessWidget {
     log("Controller: $controller_");
     log("Initial Team Size: ${controller_.teamSize.value}");
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Application Form"),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -44,18 +47,6 @@ class TeamApplyPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            // GetBuilder<ApplicationController>(
-            //   builder: (controller_) {
-            //     log(":::: ${controller_.teamSize.value}");
-            //     return SizedBox(
-            //       height: MediaQuery.of(context).size.height * 0.6,
-            //       child: MyTabBar(
-            //         controller: controller_,
-            //         tabs: controller_.teamSize.value,
-            //       ),
-            //     );
-            //   },
-            // ),
             Obx(
               () => SizedBox(
                 height: MediaQuery.of(context).size.height * 0.6,
