@@ -51,7 +51,7 @@ class IndependentUserModel {
       'profilePhoto': profilePhoto,
       'username': username,
       'myProjects': myProjects,
-      'accountType' : accountType,
+      'accountType': accountType,
     };
   }
 
@@ -81,7 +81,6 @@ class IndependentUserModel {
     return IndependentUserModel.fromMap(json.decode(source));
   }
 }
-
 
 //previous constuctor for student model:
 /*IndependentUserModel({

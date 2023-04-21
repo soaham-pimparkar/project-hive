@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void showSnackBar(
     /*int? time,
@@ -25,14 +26,14 @@ void showSnackBar(
 }*/
 
 class formFieldRow extends StatelessWidget {
-  TextEditingController useController = TextEditingController();
+  TextEditingController? useController = TextEditingController();
   String useText;
   bool isReadOnly;
   String? initialText;
 
   formFieldRow(
       {super.key,
-      required this.useController,
+      this.useController,
       required this.useText,
       this.isReadOnly = false,
       this.initialText});
@@ -48,7 +49,8 @@ class formFieldRow extends StatelessWidget {
         SizedBox(width: 25),
         Expanded(
           child: TextFormField(
-            initialValue: initialText,
+            //initialValue: initialText,
+            decoration: InputDecoration(labelText: initialText),
             readOnly: isReadOnly,
             controller: useController,
           ),
@@ -57,3 +59,12 @@ class formFieldRow extends StatelessWidget {
     );
   }
 }
+
+AppBar myAppBar = AppBar(
+  leading: IconButton(
+      onPressed: () {
+        //Get.toNamed('/');
+      },
+      icon: Icon(Icons.home)),
+      
+);

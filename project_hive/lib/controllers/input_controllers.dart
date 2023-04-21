@@ -72,7 +72,6 @@ class userInputController extends GetxController {
   final instituteCtr = TextEditingController();
   final positionCtr = TextEditingController();
   final aboutInstituteCtr = TextEditingController();
-
 }
 
 class projectInputController extends GetxController {

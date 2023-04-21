@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_hive/models/company_employee_model.dart';
 import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/models/student_model.dart';
+import 'package:project_hive/screens/profile_view/edit_profile.dart';
 import 'package:project_hive/screens/profile_view/my_profile.dart';
 import 'package:project_hive/services/authentication.dart';
 import 'package:project_hive/services/database.dart';
@@ -83,6 +84,7 @@ class testPage extends StatelessWidget {
                           maxTeamSize: 4,
                           minTeamSize: 1,
                           uid: useUid,
+                          keywords: [],
                           ownerUid: await authObj.getUserUid(
                               context:
                                   context), //implement error handling while final code
@@ -118,9 +120,9 @@ class testPage extends StatelessWidget {
                 // Spacer(),
                 FilledButton(
                     onPressed: () {
-                      //Get.to(myProfileView());
+                      Get.to(editProfileView());
                     },
-                    child: Text('log in')),
+                    child: Text('Navigate')),
                 Spacer(),
               ],
             )

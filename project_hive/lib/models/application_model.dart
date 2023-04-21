@@ -13,7 +13,7 @@ class ApplicationModel {
   List<Map<String, String>> members;
 
   ApplicationModel(
-     {required this.appeal,
+      {required this.appeal,
       required this.uid,
       required this.background,
       this.mode,

@@ -12,8 +12,8 @@ database databaseObj = database();
 Authentication authObj = Authentication();
 final _inputCtr = Get.put(userInputController());
 
-class myProfileView extends StatelessWidget {
-  const myProfileView({super.key});
+class editProfileView extends StatelessWidget {
+  const editProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class myProfileView extends StatelessWidget {
                         formFieldRow(
                             useController: _inputCtr.ageCtr,
                             useText: 'Age:',
-                            initialText: snapshot.data?['age']),
+                            initialText: snapshot.data?['age'].toString()),
                         formFieldRow(
                             useController: _inputCtr.introLineCtr,
                             useText: 'Intro Line:',
@@ -64,15 +64,15 @@ class myProfileView extends StatelessWidget {
                             useController: _inputCtr.phoneNumberCtr,
                             useText: 'Phone Number:',
                             initialText: snapshot.data?['phoneNumber']),
-                        formFieldRow(
+                        /*formFieldRow(
                             useController: _inputCtr.emailidCtr,
                             useText: 'Email Id:',
-                            initialText: snapshot.data?['emailid']),
+                            initialText: snapshot.data?['emailid']),*/
                         formFieldRow(
                             useController: _inputCtr.linksCtr,
                             useText:
                                 'My Links [Linkedin/ Portfolios/ Resume...]',
-                            initialText: snapshot.data?['links']),
+                            initialText: snapshot.data?['links'].toString()),
                         formFieldRow(
                             useController: _inputCtr.educationCtr,
                             useText: 'My Education:',
@@ -86,15 +86,57 @@ class myProfileView extends StatelessWidget {
                             useText: 'My Experience',
                             initialText: snapshot.data?['experience']),
                         FilledButton(
-                            onPressed: () {
-
-                              final student = StudentModel(age: int.parse(_inputCtr.ageCtr.text), emailid: _inputCtr.emailidCtr.text, introLine: _inputCtr.introLineCtr.text, name: _inputCtr.nameCtr.text, username: _inputCtr.usernameCtr.text, description: _inputCtr.descriptionCtr.text, location: _inputCtr.locationCtr.text, links: _inputCtr.linksCtr.text, )
+                            onPressed: () async {
+                              final useStudent = StudentModel(
+                                age: _inputCtr.ageCtr.text.isEmpty ? snapshot.data?['age'] : _inputCtr.ageCtr.text,
+      emailid: snapshot.data?['emailid'],
+      introLine: _inputCtr.introLineCtr.text.isEmpty
+        ? snapshot.data?['introLine']
+        : _inputCtr.introLineCtr.text,
+      name: _inputCtr.nameCtr.text.isEmpty
+        ? snapshot.data?['name']
+        : _inputCtr.nameCtr.text,
+      username: _inputCtr.usernameCtr.text.isEmpty
+        ? snapshot.data?['username']
+        : _inputCtr.usernameCtr.text,
+      description: _inputCtr.descriptionCtr.text.isEmpty
+        ? snapshot.data?['description']
+        : _inputCtr.descriptionCtr.text,
+      location: _inputCtr.locationCtr.text.isEmpty
+        ? snapshot.data?['location']
+        : _inputCtr.locationCtr.text,
+      links: _inputCtr.linksCtr.text.isEmpty
+        ? snapshot.data?['links']
+        : ['${_inputCtr.linksCtr.text}'],
+      interests: _inputCtr.interestsCtr.text.isEmpty
+        ? snapshot.data?['interests']
+        : ['${_inputCtr.interestsCtr.text}'],
+      phoneNumber: _inputCtr.phoneNumberCtr.text.isEmpty
+        ? snapshot.data?['phoneNumber']
+        : _inputCtr.phoneNumberCtr.text,
+      experience: _inputCtr.experienceCtr.text.isEmpty
+        ? snapshot.data?['experience']
+        : _inputCtr.experienceCtr.text,
+      education: _inputCtr.educationCtr.text.isEmpty
+        ? snapshot.data?['education']
+        : _inputCtr.educationCtr.text,
+                                //profile photo, idcard
+                                // idCard: snapshot.data?['idCard'],// please update
+                                // profilePhoto: snapshot.data?['profilePhoto'],//please update
+                                // accountType: snapshot.data?['accountType'],
+                                // myApplications: snapshot.data?['myApplications'],
+                                // uid: snapshot.data?['uid'],
+                              );
+                              await databaseObj.updateUserRecord(
+                                  useUid: snapshot.data?['uid'],
+                                  context: context,
+                                  student: useStudent);
                               //Submit data to firebase
                             },
                             child: Text('Submit')),
                         FilledButton(
                             onPressed: () {
-                              //Submit data to firebase
+                              //Get.to('myProfileView');
                             },
                             child: Text('Discard'))
                       ],
@@ -121,7 +163,7 @@ class myProfileView extends StatelessWidget {
                         formFieldRow(
                             useController: _inputCtr.ageCtr,
                             useText: 'Age:',
-                            initialText: snapshot.data?['age']),
+                            initialText: snapshot.data?['age'].toString()),
                         formFieldRow(
                             useController: _inputCtr.introLineCtr,
                             useText: 'Intro Line:',
@@ -142,7 +184,7 @@ class myProfileView extends StatelessWidget {
                             useController: _inputCtr.linksCtr,
                             useText:
                                 'My Links [Linkedin/ Portfolios/ Resume...]',
-                            initialText: snapshot.data?['links']),
+                            initialText: snapshot.data?['links'].toString()),
                         formFieldRow(
                             useController: _inputCtr.companyNameCtr,
                             useText: 'My Company:',
@@ -179,7 +221,7 @@ class myProfileView extends StatelessWidget {
                         formFieldRow(
                             useController: _inputCtr.ageCtr,
                             useText: 'Age:',
-                            initialText: snapshot.data?['age']),
+                            initialText: snapshot.data?['age'].toString()),
                         formFieldRow(
                             useController: _inputCtr.introLineCtr,
                             useText: 'Intro Line:',
@@ -200,7 +242,7 @@ class myProfileView extends StatelessWidget {
                             useController: _inputCtr.linksCtr,
                             useText:
                                 'My Links [Linkedin/ Portfolios/ Resume...]',
-                            initialText: snapshot.data?['links']),
+                            initialText: snapshot.data?['links'].toString()),
                         formFieldRow(
                             useController: _inputCtr.instituteCtr,
                             useText: 'My Institute:',
@@ -237,7 +279,7 @@ class myProfileView extends StatelessWidget {
                         formFieldRow(
                             useController: _inputCtr.ageCtr,
                             useText: 'Age:',
-                            initialText: snapshot.data?['age']),
+                            initialText: snapshot.data?['age'].toString()),
                         formFieldRow(
                             useController: _inputCtr.introLineCtr,
                             useText: 'Intro Line:',
@@ -258,7 +300,7 @@ class myProfileView extends StatelessWidget {
                             useController: _inputCtr.linksCtr,
                             useText:
                                 'My Links [Linkedin/ Portfolios/ Resume...]',
-                            initialText: snapshot.data?['links']),
+                            initialText: snapshot.data?['links'].toString()),
                       ],
                     );
                   } else {

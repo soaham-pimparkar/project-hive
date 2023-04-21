@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:js_interop';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:project_hive/globals/widgets.dart';
@@ -53,7 +56,42 @@ class database {
     }
   }
 
-  
+  //update user
+  Future<void> updateUserRecord({
+    required String useUid,
+    required BuildContext context,
+    StudentModel? student,
+    CompanyEmployeeModel? companyEmployee,
+    InstituteFacultyModel? institueFaculty,
+    IndependentUserModel? independentUser,
+  }) async {
+    dynamic userModel;
+    String userType;
+    if (student != null) {
+      student.uid = useUid;
+      userModel = student;
+      userType = "students";
+    } else if (companyEmployee != null) {
+      companyEmployee.uid = useUid;
+      userModel = companyEmployee;
+      userType = "companyEmployee";
+    } else if (institueFaculty != null) {
+      institueFaculty.uid = useUid;
+      userModel = institueFaculty;
+      userType = "instituteFaculty";
+    } else if (independentUser != null) {
+      independentUser.uid = useUid;
+      userModel = independentUser;
+      userType = "independentUser";
+    } else {
+      throw Exception("Valid user type not found");
+    }
+    try {
+      await _firestore.doc("$userType/$useUid").update(userModel.toMap());
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
 
   //change user details
 
@@ -183,6 +221,14 @@ class database {
       showSnackBar(context, e.toString());
       return [];
     }
+  }
+
+  Future<List<ProjectModel>> readAllProjects() async {
+    final collectionRef = FirebaseFirestore.instance.collection('projects');
+    final snapshot = await collectionRef.get();
+    final projects =
+        snapshot.docs.map((doc) => ProjectModel.fromMap(doc.data())).toList();
+    return projects;
   }
 
   Future<List<Map<dynamic, dynamic>>> getProjectDetails({

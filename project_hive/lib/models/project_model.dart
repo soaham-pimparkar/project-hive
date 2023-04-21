@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class ProjectModel {
   String? projectDetails;
   String projectType;
   String? mode;
   String title;
-  List<String>? keywords;
+  List<dynamic> keywords;
   String? location;
   String companyDetails;
   String? prerequisites;
@@ -16,8 +18,7 @@ class ProjectModel {
   int? minTeamSize;
   int? maxTeamSize;
   String ownerUid;
-  List<String>? receivedApplications;
-  
+  List<dynamic>? receivedApplications;
 
   ProjectModel({
     required this.projectType,
@@ -26,7 +27,7 @@ class ProjectModel {
     required this.uid,
     this.projectDetails,
     this.mode,
-    this.keywords,
+    required this.keywords,
     this.location,
     this.prerequisites,
     this.responsibilities,
@@ -72,7 +73,7 @@ class ProjectModel {
       responsibilities: map['responsibilities'] ?? '',
       uid: map['uid'] ?? '',
       rewards: map['rewards'] ?? '',
-      deadline: map['deadline'] ?? DateTime.now(),
+      deadline: (map['deadline'] as Timestamp).toDate() ?? DateTime.now(),
       ownerUid: map['ownerUid'] ?? '',
       receivedApplications: map['receivedApplications'] ?? [],
     );
