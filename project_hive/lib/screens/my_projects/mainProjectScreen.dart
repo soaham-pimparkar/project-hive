@@ -12,7 +12,6 @@ class StudentProjectView extends StatelessWidget {
   Widget build(BuildContext context) {
     print("In StudentProjectView");
     double heightMax = MediaQuery.of(context).size.height;
-    double widthMax = MediaQuery.of(context).size.width;
     return FutureBuilder<List<Map<dynamic, dynamic>>>(
       future: databaseObj.readSelectedProjects(useUid: uid, context: context),
       builder: (context, snapshot) {
@@ -310,7 +309,7 @@ class InfoPopup extends StatelessWidget {
 class ListItem extends StatelessWidget {
   final String title1;
   final String value;
-  ListItem({super.key, required this.title1, required this.value});
+  const ListItem({super.key, required this.title1, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -340,7 +339,7 @@ class ListItem extends StatelessWidget {
 
 class CardItem extends StatelessWidget {
   final String value;
-  CardItem({super.key, required this.value});
+  const CardItem({super.key, required this.value});
 
   @override
   Widget build(BuildContext context) {

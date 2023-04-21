@@ -86,9 +86,10 @@ class editProfileView extends StatelessWidget {
                             useText: 'My Experience',
                             initialText: snapshot.data?['experience']),
                         FilledButton(
-                            onPressed: () async {
+                            onPressed: () {},
+                            /*async {
                               final useStudent = StudentModel(
-                                age: _inputCtr.ageCtr.text.isEmpty ? snapshot.data?['age'] : _inputCtr.ageCtr.text,
+      age:( _inputCtr.ageCtr.text.isEmpty) ? snapshot.data?['age'] : _inputCtr.ageCtr.text,
       emailid: snapshot.data?['emailid'],
       introLine: _inputCtr.introLineCtr.text.isEmpty
         ? snapshot.data?['introLine']
@@ -137,7 +138,7 @@ class editProfileView extends StatelessWidget {
                         FilledButton(
                             onPressed: () {
                               //Get.to('myProfileView');
-                            },
+                            },*/
                             child: Text('Discard'))
                       ],
                     );

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project_hive/models/company_employee_model.dart';
 import 'package:project_hive/models/project_model.dart';
@@ -18,7 +17,7 @@ class testPage extends StatelessWidget {
     final authObj = Authentication();
     final databaseObj = database();
     return Scaffold(
-      appBar: AppBar(title: Text('Test Page')),
+      appBar: AppBar(title: const Text('Test Page')),
       body: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,8 +46,8 @@ class testPage extends StatelessWidget {
                           context: context,
                           student: useStudent);
                     },
-                    child: Text('Sign up student')),
-                Spacer(),
+                    child: const Text('Sign up student')),
+                const Spacer(),
                 FilledButton(
                     onPressed: () {
                       CompanyEmployeeModel useCompanyEmployee =
@@ -71,11 +70,11 @@ class testPage extends StatelessWidget {
                           context: context,
                           companyEmployee: useCompanyEmployee);
                     },
-                    child: Text('Sign up companyEmployee')),
-                Spacer(),
+                    child: const Text('Sign up companyEmployee')),
+                const Spacer(),
                 FilledButton(
                     onPressed: () async {
-                      var useUid = Uuid().v4();
+                      var useUid = const Uuid().v4();
                       ProjectModel useProject = ProjectModel(
                           projectType: 'project',
                           title: 'Test Project',

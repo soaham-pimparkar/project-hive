@@ -27,17 +27,17 @@ class CreateProjectView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Create New Project',
                 style: TextStyle(fontSize: 36),
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Type:'),
-                  SizedBox(width: 25),
+                  const Text('Type:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.projectTypeCtr,
@@ -45,13 +45,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Title:'),
-                  SizedBox(width: 25),
+                  const Text('Title:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.titleCtr,
@@ -59,13 +59,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Details:'),
-                  SizedBox(width: 25),
+                  const Text('Details:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.projectDetailsCtr,
@@ -73,13 +73,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Company Details:'),
-                  SizedBox(width: 25),
+                  const Text('Company Details:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.companyDetailsCtr,
@@ -87,13 +87,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Keywords:'),
-                  SizedBox(width: 25),
+                  const Text('Keywords:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.keywordsCtr,
@@ -101,13 +101,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Days left for application:'),
-                  SizedBox(width: 25),
+                  const Text('Days left for application:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.deadlineCtr,
@@ -115,13 +115,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Minimum team size:'),
-                  SizedBox(width: 25),
+                  const Text('Minimum team size:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.minTeamSizeCtr,
@@ -129,13 +129,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Maximum team size:'),
-                  SizedBox(width: 25),
+                  const Text('Maximum team size:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.maxTeamSizeCtr,
@@ -143,13 +143,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Mode:'),
-                  SizedBox(width: 25),
+                  const Text('Mode:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.modeCtr,
@@ -157,13 +157,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('location:'),
-                  SizedBox(width: 25),
+                  const Text('location:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.locationCtr,
@@ -171,13 +171,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Prerequisites:'),
-                  SizedBox(width: 25),
+                  const Text('Prerequisites:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.prerequisitesCtr,
@@ -185,13 +185,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Responsibilities:'),
-                  SizedBox(width: 25),
+                  const Text('Responsibilities:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.responsibilitiesCtr,
@@ -199,13 +199,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Rewards:'),
-                  SizedBox(width: 25),
+                  const Text('Rewards:'),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: TextFormField(
                       controller: _inputCtr.rewardsCtr,
@@ -213,13 +213,13 @@ class CreateProjectView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               ElevatedButton(
                   onPressed: () async {
                     try {
                       String useOwnerUid =
                           await authObj.getUserUid(context: context);
-                      var useUid = Uuid().v4();
+                      var useUid = const Uuid().v4();
                       DateTime useDateTime = DateTime.now().add(Duration(
                           days: int.parse(_inputCtr.deadlineCtr.text)));
                       final useProject = ProjectModel(
@@ -239,7 +239,7 @@ class CreateProjectView extends StatelessWidget {
                       showSnackBar(context, e.toString());
                     }
                   },
-                  child: Text('Submit'))
+                  child: const Text('Submit'))
             ],
           ),
         ),

@@ -1,6 +1,4 @@
-import 'dart:math';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project_hive/globals/widgets.dart';
@@ -125,7 +123,7 @@ class Authentication {
       if (_auth.currentUser == null) {
         throw Exception('User is null');
       } else {
-        useString = await _auth.currentUser!.uid;
+        useString = _auth.currentUser!.uid;
       }
       return useString;
     } catch (e) {

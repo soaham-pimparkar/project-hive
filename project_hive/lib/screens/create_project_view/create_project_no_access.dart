@@ -12,12 +12,12 @@ class CreateProjectNoAccessView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('Oops....You do not have access to this feature :/'),
-              SizedBox(height: 15),
-              Text(
+              const Text('Oops....You do not have access to this feature :/'),
+              const SizedBox(height: 15),
+              const Text(
                   'Please check that you have signed in using a non-student account'),
-              SizedBox(height: 15),
-              FilledButton(onPressed: () {}, child: Text('My profile'))
+              const SizedBox(height: 15),
+              FilledButton(onPressed: () {}, child: const Text('My profile'))
             ],
           ),
         ));

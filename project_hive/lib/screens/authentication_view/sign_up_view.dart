@@ -11,30 +11,30 @@ class SignUpView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Sign Up',
               style: TextStyle(fontSize: 36),
             ),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Account Type:'),
-                SizedBox(
+                const Text('Account Type:'),
+                const SizedBox(
                   width: 25,
                 ),
-                DropdownButton(items: [
-                  DropdownMenuItem(child: Text('Student'), value: 'student'),
+                DropdownButton(items: const [
+                  DropdownMenuItem(value: 'student', child: Text('Student')),
                   DropdownMenuItem(
-                      child: Text('Company Representative'),
-                      value: 'companyEmployee'),
+                      value: 'companyEmployee',
+                      child: Text('Company Representative')),
                   DropdownMenuItem(
-                      child: Text('Institute Faculty'),
-                      value: 'instituteFaculty'),
+                      value: 'instituteFaculty',
+                      child: Text('Institute Faculty')),
                   DropdownMenuItem(
-                      child: Text('Independent User'),
-                      value: 'independentUser'),
+                      value: 'independentUser',
+                      child: Text('Independent User')),
                 ], onChanged: (String) {})
               ],
             )

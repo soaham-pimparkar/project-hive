@@ -1,17 +1,30 @@
-import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class ApplicationController extends GetxController {
   String? accountTypeCtr;
-  var teamSize = 2.obs;
+  String? uid;
+  String? projectUId;
+
+  var teamSize = 3.obs;
   final teamMemberSize = TextEditingController();
   final teamDetails = TextEditingController();
   final appeal = TextEditingController();
   final queries = TextEditingController();
   final List<Map<String, dynamic>> memberInfo = [];
+
+  void clear() {
+    teamDetails.clear();
+    teamDetails.clear();
+    appeal.clear();
+    queries.clear();
+  }
+
+  void updateTeamSize(int size) {
+    teamSize.value = size;
+    refresh();
+  }
 
   Map<String, dynamic> toMap() {
     return {
@@ -33,6 +46,26 @@ class MemberDetailsController extends GetxController {
   final links = TextEditingController();
   final location = TextEditingController();
   final education = TextEditingController();
+
+  void clear_() {
+    memberName.clear();
+    email.clear();
+    phoneNum.clear();
+    links.clear();
+    location.clear();
+    education.clear();
+  }
+
+  bool isEmpty() {
+    return memberName.value.text == "" &&
+            email.value.text == "" &&
+            phoneNum.value.text == "" &&
+            links.text == "" &&
+            location.text == "" &&
+            education.text == ""
+        ? true
+        : false;
+  }
 
   Map<String, dynamic> toMap() {
     return {

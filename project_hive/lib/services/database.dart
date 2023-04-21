@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'dart:convert';
 import 'dart:js_interop';
 
@@ -11,7 +13,7 @@ import 'package:project_hive/models/institute_faculty_model.dart';
 import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/models/student_model.dart';
 import 'package:project_hive/services/authentication.dart';
-//import 'package:uuid/uuid.dart';
+import 'package:uuid/uuid.dart';
 
 final _auth = Authentication();
 
@@ -215,12 +217,27 @@ class database {
           applications.add(Map<String, dynamic>.from(t1.data()!));
         }
       }
-      print("In function: $applications");
+      log("In function: $applications");
       return applications;
     } catch (e) {
       showSnackBar(context, e.toString());
       return [];
     }
+  }
+
+  Future<void> makeNewApplication(Map<String, dynamic> data,
+      BuildContext context, String projectUid) async {
+    String applicantUid = await _auth.getUserUid(context: context);
+    String applicationUid = const Uuid().v4();
+
+    await _firestore.doc("projects/$projectUid").update({
+      "receivedApplications": FieldValue.arrayUnion([applicationUid])
+    });
+    await _firestore.doc("applications/$applicationUid").set(data);
+
+    await _firestore.doc("students/$applicantUid").update({
+      "appliedProjects": FieldValue.arrayUnion([applicationUid])
+    });
   }
 
   Future<List<ProjectModel>> readAllProjects() async {
@@ -242,7 +259,7 @@ class database {
       if (t1.exists && t1.data() != null) {
         applications.add(Map<String, dynamic>.from(t1.data()!));
       }
-      print("In function: $applications");
+      log("In function: $applications");
       return applications;
     } catch (e) {
       showSnackBar(context, e.toString());
