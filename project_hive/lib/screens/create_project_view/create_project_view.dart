@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_hive/controllers/input_controllers.dart';
+import 'package:project_hive/globals/appBar.dart';
 import 'package:project_hive/globals/widgets.dart';
 import 'package:project_hive/models/project_model.dart';
+import 'package:project_hive/screens/create_project_view/create_project_no_access.dart';
 // import 'package:project_hive/screens/create_project_view/create_project_no_access.dart';
 import 'package:project_hive/services/authentication.dart';
 import 'package:project_hive/services/database.dart';
@@ -17,15 +19,18 @@ class CreateProjectView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('before if true called');
-    if (true) {
-      print('if true called, before returning scaffold');
+    //print('before if true called');
+    if (databaseObj.getAccountType(context: context) == 'students') {
+      return CreateProjectNoAccessView();
+    } else {
+      //print('if true called, before returning scaffold');
       return Scaffold(
-        appBar: AppBar(), //replace with default bar later
+        appBar: CustomAppBar(),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               const Text(
                 'Create New Project',
@@ -245,8 +250,5 @@ class CreateProjectView extends StatelessWidget {
         ),
       );
     }
-    // else {
-    //   return CreateProjectNoAccessView();
-    // }
   }
 }

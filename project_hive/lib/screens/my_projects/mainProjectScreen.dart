@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_hive/globals/appBar.dart';
 import '../../services/database.dart';
 
 class StudentProjectView extends StatelessWidget {
@@ -10,7 +11,7 @@ class StudentProjectView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("In StudentProjectView");
+    //print("In StudentProjectView");
     double heightMax = MediaQuery.of(context).size.height;
     return FutureBuilder<List<Map<dynamic, dynamic>>>(
       future: databaseObj.readSelectedProjects(useUid: uid, context: context),
@@ -26,9 +27,7 @@ class StudentProjectView extends StatelessWidget {
                 primarySwatch: Colors.blue,
               ),
               home: Scaffold(
-                appBar: AppBar(
-                  title: const Text("Applied Projects"),
-                ),
+                appBar: CustomAppBar(),
                 body: Center(
                   child: GridView.builder(
                     gridDelegate:

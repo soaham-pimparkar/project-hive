@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_hive/controllers/input_controllers.dart';
+import 'package:project_hive/globals/appBar.dart';
 import 'package:project_hive/globals/widgets.dart';
 import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/services/authentication.dart';
@@ -17,7 +18,7 @@ class myProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -90,7 +91,8 @@ class myProfileView extends StatelessWidget {
                             //useController: _inputCtr.interestsCtr,
                             useText: 'My Interests:',
                             isReadOnly: true,
-                            initialText: snapshot.data?['interests']),
+                            initialText:
+                                snapshot.data?['interests'].toString()),
                         formFieldRow(
                             //useController: _inputCtr.experienceCtr,
                             useText: 'My Experience',
@@ -301,12 +303,19 @@ class myProfileView extends StatelessWidget {
                 }
               },
             ),
-            //button
+            SizedBox(height: 20),
             FilledButton(
                 onPressed: () {
-                  //Get.toNamed('editProfile');//also pass values
+                  Get.toNamed('/editProfilePage');
                 },
-                child: Text('Edit Profile'))
+                child: Text('Edit Profile')),
+            SizedBox(height: 20),
+            FilledButton(
+                onPressed: () {
+                  Get.toNamed('/myResources');
+                },
+                child: Text('My Projects/ Applications')),
+            SizedBox(height: 20),
           ],
         ),
       ),

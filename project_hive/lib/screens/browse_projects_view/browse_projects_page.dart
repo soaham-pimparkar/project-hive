@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_hive/controllers/browse_projects_controller.dart';
+import 'package:project_hive/globals/appBar.dart';
 
 import 'widgets/browse_project_grid_tile.dart';
 import 'widgets/filter_and_sort_bar.dart';
@@ -14,13 +15,7 @@ class BrowseProjectsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     browseProjectsPageController.getProjects();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Logo'),
-        actions: [
-          TextButton(onPressed: () {}, child: const Text('Browse Projects')),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.person))
-        ],
-      ),
+      appBar: CustomAppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -31,7 +26,8 @@ class BrowseProjectsPage extends StatelessWidget {
                 : Expanded(
                     child: GridView.builder(
                       gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3),
                       itemCount: browseProjectsPageController.projects.length,
                       itemBuilder: (context, index) {
                         return BrowseProjectsGridTile(

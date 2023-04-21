@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:project_hive/globals/appBar.dart';
 
 class VerifyEmailView extends StatelessWidget {
   const VerifyEmailView({super.key});
@@ -6,7 +8,7 @@ class VerifyEmailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(), //replace with default bar later
+        appBar: CustomAppBar(), //replace with default bar later
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -14,7 +16,11 @@ class VerifyEmailView extends StatelessWidget {
             children: [
               const Text(
                   'Verification email has been sent to your email accout.... Please verify in order to log in'),
-              FilledButton(onPressed: () {}, child: const Text('Open Gmail'))
+              FilledButton(
+                  onPressed: () {
+                    Get.toNamed('/SignInPage');
+                  },
+                  child: const Text('Log In'))
             ],
           ),
         ));

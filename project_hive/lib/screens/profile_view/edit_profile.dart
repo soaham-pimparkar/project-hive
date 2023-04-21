@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_hive/controllers/input_controllers.dart';
+import 'package:project_hive/globals/appBar.dart';
 import 'package:project_hive/globals/widgets.dart';
 import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/models/student_model.dart';
@@ -18,7 +19,7 @@ class editProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -30,6 +31,9 @@ class editProfileView extends StatelessWidget {
               future: databaseObj.getUserData(context: context),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  if (snapshot.data == null) {
+                    return Container();
+                  }
                   if (snapshot.data?['accountType'] == 'students') {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -80,47 +84,53 @@ class editProfileView extends StatelessWidget {
                         formFieldRow(
                             useController: _inputCtr.interestsCtr,
                             useText: 'My Interests:',
-                            initialText: snapshot.data?['interests']),
+                            initialText:
+                                snapshot.data?['interests'].toString()),
                         formFieldRow(
                             useController: _inputCtr.experienceCtr,
                             useText: 'My Experience',
                             initialText: snapshot.data?['experience']),
+                        SizedBox(height: 20),
                         FilledButton(
-                            onPressed: () {},
-                            /*async {
+                            onPressed: () async {
+                              final data = snapshot.data;
                               final useStudent = StudentModel(
-      age:( _inputCtr.ageCtr.text.isEmpty) ? snapshot.data?['age'] : _inputCtr.ageCtr.text,
-      emailid: snapshot.data?['emailid'],
-      introLine: _inputCtr.introLineCtr.text.isEmpty
-        ? snapshot.data?['introLine']
-        : _inputCtr.introLineCtr.text,
-      name: _inputCtr.nameCtr.text.isEmpty
-        ? snapshot.data?['name']
-        : _inputCtr.nameCtr.text,
-      username: _inputCtr.usernameCtr.text.isEmpty
-        ? snapshot.data?['username']
-        : _inputCtr.usernameCtr.text,
-      description: _inputCtr.descriptionCtr.text.isEmpty
-        ? snapshot.data?['description']
-        : _inputCtr.descriptionCtr.text,
-      location: _inputCtr.locationCtr.text.isEmpty
-        ? snapshot.data?['location']
-        : _inputCtr.locationCtr.text,
-      links: _inputCtr.linksCtr.text.isEmpty
-        ? snapshot.data?['links']
-        : ['${_inputCtr.linksCtr.text}'],
-      interests: _inputCtr.interestsCtr.text.isEmpty
-        ? snapshot.data?['interests']
-        : ['${_inputCtr.interestsCtr.text}'],
-      phoneNumber: _inputCtr.phoneNumberCtr.text.isEmpty
-        ? snapshot.data?['phoneNumber']
-        : _inputCtr.phoneNumberCtr.text,
-      experience: _inputCtr.experienceCtr.text.isEmpty
-        ? snapshot.data?['experience']
-        : _inputCtr.experienceCtr.text,
-      education: _inputCtr.educationCtr.text.isEmpty
-        ? snapshot.data?['education']
-        : _inputCtr.educationCtr.text,
+                                age: (_inputCtr.ageCtr.text.isEmpty)
+                                    ? data!['age']
+                                    : int.parse(_inputCtr.ageCtr.text),
+                                emailid: snapshot.data?['emailid'],
+                                introLine: _inputCtr.introLineCtr.text.isEmpty
+                                    ? data!['introLine']
+                                    : _inputCtr.introLineCtr.text,
+                                name: _inputCtr.nameCtr.text.isEmpty
+                                    ? data!['name']
+                                    : _inputCtr.nameCtr.text,
+                                username: _inputCtr.usernameCtr.text.isEmpty
+                                    ? data!['username']
+                                    : _inputCtr.usernameCtr.text,
+                                description:
+                                    _inputCtr.descriptionCtr.text.isEmpty
+                                        ? data!['description']
+                                        : _inputCtr.descriptionCtr.text,
+                                location: _inputCtr.locationCtr.text.isEmpty
+                                    ? data!['location']
+                                    : _inputCtr.locationCtr.text,
+                                links: _inputCtr.linksCtr.text.isEmpty
+                                    ? data!['links']
+                                    : ['${_inputCtr.linksCtr.text}'],
+                                interests: _inputCtr.interestsCtr.text.isEmpty
+                                    ? data!['interests']
+                                    : ['${_inputCtr.interestsCtr.text}'],
+                                phoneNumber:
+                                    _inputCtr.phoneNumberCtr.text.isEmpty
+                                        ? data!['phoneNumber']
+                                        : _inputCtr.phoneNumberCtr.text,
+                                experience: _inputCtr.experienceCtr.text.isEmpty
+                                    ? data!['experience']
+                                    : _inputCtr.experienceCtr.text,
+                                education: _inputCtr.educationCtr.text.isEmpty
+                                    ? data!['education']
+                                    : _inputCtr.educationCtr.text,
                                 //profile photo, idcard
                                 // idCard: snapshot.data?['idCard'],// please update
                                 // profilePhoto: snapshot.data?['profilePhoto'],//please update
@@ -135,10 +145,11 @@ class editProfileView extends StatelessWidget {
                               //Submit data to firebase
                             },
                             child: Text('Submit')),
+                        SizedBox(height: 20),
                         FilledButton(
                             onPressed: () {
-                              //Get.to('myProfileView');
-                            },*/
+                              Get.toNamed('myProfilePage');
+                            },
                             child: Text('Discard'))
                       ],
                     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_hive/globals/appBar.dart';
 
 class CreateProjectNoAccessView extends StatelessWidget {
   const CreateProjectNoAccessView({super.key});
@@ -6,7 +7,7 @@ class CreateProjectNoAccessView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(), //replace with default bar later
+        appBar: CustomAppBar(), //replace with default bar later
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

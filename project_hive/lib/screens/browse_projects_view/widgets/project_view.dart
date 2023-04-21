@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_hive/globals/appBar.dart';
 import 'package:project_hive/models/project_model.dart';
 
 import '../../../controllers/browse_projects_controller.dart';
@@ -13,13 +14,7 @@ class ProjectView extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Logo'),
-        actions: [
-          TextButton(onPressed: () {}, child: const Text('Browse Projects')),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.person))
-        ],
-      ),
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
@@ -91,7 +86,8 @@ class ProjectView extends StatelessWidget {
                           width: size.width * 0.5,
                           child: GridView.builder(
                             padding: EdgeInsets.zero,
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               mainAxisSpacing: 0,
                               crossAxisSpacing: 0,
@@ -152,7 +148,8 @@ class ProjectView extends StatelessWidget {
                           width: size.width * 0.05,
                         ),
                         Expanded(
-                          child: Text('${project.minTeamSize} - ${project.maxTeamSize}'),
+                          child: Text(
+                              '${project.minTeamSize} - ${project.maxTeamSize}'),
                         )
                       ],
                     )
@@ -217,6 +214,12 @@ class ProjectView extends StatelessWidget {
                       ],
                     )
                   : const SizedBox(),
+              FilledButton(
+                onPressed: () {
+                  Get.toNamed('/application');
+                },
+                child: Text('Apply For Project'),
+              )
             ],
           ),
         ),

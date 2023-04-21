@@ -82,8 +82,9 @@ class MemberDetailsController extends GetxController {
 }
 
 class userInputController extends GetxController {
-  String? accountTypeCtr;
-  String? genderCtr;
+  final passwordCtr = TextEditingController();
+  final accountTypeCtr = TextEditingController();
+  final genderCtr = TextEditingController();
   final ageCtr = TextEditingController();
   final descriptionCtr = TextEditingController();
   final emailidCtr = TextEditingController();

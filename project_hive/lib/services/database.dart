@@ -236,7 +236,7 @@ class database {
     await _firestore.doc("applications/$applicationUid").set(data);
 
     await _firestore.doc("students/$applicantUid").update({
-      "appliedProjects": FieldValue.arrayUnion([applicationUid])
+      "myApplication": FieldValue.arrayUnion([applicationUid])
     });
   }
 

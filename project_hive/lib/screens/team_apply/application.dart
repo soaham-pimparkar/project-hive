@@ -3,12 +3,16 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_hive/controllers/input_controllers.dart';
+import 'package:project_hive/globals/appBar.dart';
 import '../../services/database.dart';
 
 class TeamApplyPage extends StatelessWidget {
   final databaseObj = database();
-  final String uid;
-  TeamApplyPage({super.key, required this.uid});
+  final String uid = '1bf42975-0617-4358-ae85-3130d5a334d0';
+  TeamApplyPage({
+    super.key,
+    /*required this.uid*/
+  });
   @override
   Widget build(BuildContext context) {
     // ApplicationModel _application = ApplicationModel();
@@ -16,9 +20,7 @@ class TeamApplyPage extends StatelessWidget {
     log("Controller: $controller_");
     log("Initial Team Size: ${controller_.teamSize.value}");
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Application Form"),
-      ),
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -56,23 +58,21 @@ class TeamApplyPage extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: 20),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ElevatedButton(
-                    onPressed: () {
-                      log(controller_.toJson());
-                    },
-                    child: const Text("Test")),
-                const Spacer(),
-                ElevatedButton(
+                FilledButton(
                     onPressed: () {
                       databaseObj.makeNewApplication(
                           controller_.toMap(), context, uid);
-                      log("Done");
+                      //log("Done");
                     },
                     child: const Text("Submit")),
               ],
-            )
+            ),
+            SizedBox(height: 20),
           ],
         ),
       ),
