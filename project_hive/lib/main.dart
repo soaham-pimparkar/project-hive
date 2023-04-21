@@ -24,10 +24,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrangeAccent),
         useMaterial3: true,
       ),
-      // home: StudentProjectView(
-      //   uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
-      // ),
-      // home: MyTabBar(),
       home: TeamApplyPage(
         uid: '1bf42975-0617-4358-ae85-3130d5a334d0',
       ),

@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:project_hive/controllers/input_controllers.dart';
 import '../../services/database.dart';
 
@@ -10,6 +13,8 @@ class TeamApplyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // ApplicationModel _application = ApplicationModel();
     ApplicationController controller_ = ApplicationController();
+    print("Controller: $controller_");
+    print("Initial Team Size: ${controller_.teamSize.value}");
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -22,12 +27,10 @@ class TeamApplyPage extends StatelessWidget {
                   child: TextFormField(
                     keyboardType: TextInputType.number,
                     onEditingComplete: () {
-                      print("Team Member Value updated");
-                      controller_.teamSize.value =
-                          int.parse(controller_.teamMemberSize.text);
-                    },
-                    onChanged: (value) {
-                      controller_.teamSize.value = int.parse(value);
+                      controller_.updateTeamSize(
+                          int.parse(controller_.teamMemberSize.text));
+                      print(
+                          "Team Member Value updated ${controller_.teamSize.value}");
                     },
                     controller: controller_.teamMemberSize,
                   ),
@@ -42,11 +45,27 @@ class TeamApplyPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            SizedBox(
+            // GetBuilder<ApplicationController>(
+            //   builder: (controller_) {
+            //     print(":::: ${controller_.teamSize.value}");
+            //     return SizedBox(
+            //       height: MediaQuery.of(context).size.height * 0.6,
+            //       child: MyTabBar(
+            //         controller: controller_,
+            //         tabs: controller_.teamSize.value,
+            //       ),
+            //     );
+            //   },
+            // ),
+            Obx(
+              () => SizedBox(
                 height: MediaQuery.of(context).size.height * 0.6,
                 child: MyTabBar(
                   controller: controller_,
-                )),
+                  tabs: controller_.teamSize.value,
+                ),
+              ),
+            ),
             Row(
               children: [
                 ElevatedButton(
@@ -61,7 +80,7 @@ class TeamApplyPage extends StatelessWidget {
                           controller_.toMap(), context, uid);
                       print("Done");
                     },
-                    child: Text("Test")),
+                    child: Text("Submit")),
               ],
             )
           ],
@@ -73,23 +92,20 @@ class TeamApplyPage extends StatelessWidget {
 
 class MyTabBar extends StatefulWidget {
   final ApplicationController controller;
-  const MyTabBar({super.key, required this.controller});
+  final int tabs;
+  MyTabBar({super.key, required this.controller, required this.tabs}) {
+    print("MyTabBar constructor called");
+  }
   @override
   _MyTabBarState createState() => _MyTabBarState();
 }
 
 class _MyTabBarState extends State<MyTabBar> with TickerProviderStateMixin {
-  late int tabs;
-  @override
-  void initState() {
-    super.initState();
-    tabs = widget.controller.teamSize.value;
-  }
-
   @override
   Widget build(BuildContext context) {
     MemberDetailsController memberController = MemberDetailsController();
-    TabController tabController = TabController(length: tabs, vsync: this);
+    TabController tabController =
+        TabController(length: widget.tabs, vsync: this);
     String next = "Next";
     String prev = "Prev";
     void onSubmit() {
@@ -113,7 +129,7 @@ class _MyTabBarState extends State<MyTabBar> with TickerProviderStateMixin {
     }
 
     return DefaultTabController(
-      length: tabs,
+      length: widget.tabs,
       child: Column(
         children: [
           Container(
@@ -124,14 +140,15 @@ class _MyTabBarState extends State<MyTabBar> with TickerProviderStateMixin {
             child: TabBar(
               controller: tabController,
               onTap: (value) => onSubmit(),
-              tabs: List<Tab>.generate(tabs, (int index) {
+              tabs: List<Tab>.generate(widget.tabs, (int index) {
                 return Tab(text: "Member: ${index + 1}");
               }).toList(),
             ),
           ),
           Expanded(
             child: TabBarView(
-              children: List<Widget>.generate(tabs, (int index) {
+              children: List<Widget>.generate(widget.tabs, (int index) {
+                log('Tab: ${widget.tabs}');
                 return Column(
                   children: [
                     IndividualField(
@@ -174,8 +191,8 @@ class _MyTabBarState extends State<MyTabBar> with TickerProviderStateMixin {
                             onPressed: () {
                               onSubmit();
                               print(
-                                  "Tabs: ${tabs}\nIndex: ${tabController.index}");
-                              if (tabController.index + 1 < tabs) {
+                                  "Tabs: ${widget.tabs}\nIndex: ${tabController.index}");
+                              if (tabController.index + 1 < widget.tabs) {
                                 tabController.index += 1;
                               }
                             },

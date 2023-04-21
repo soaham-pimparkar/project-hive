@@ -21,6 +21,11 @@ class ApplicationController extends GetxController {
     queries.clear();
   }
 
+  void updateTeamSize(int size) {
+    teamSize.value = size;
+    refresh();
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'teamSize': teamMemberSize.text,
