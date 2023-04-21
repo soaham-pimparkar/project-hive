@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:project_hive/screens/team_apply/application.dart';
 import 'firebase_options.dart';
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('main.dart print called');
+    log('main.dart print called');
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

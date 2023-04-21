@@ -57,12 +57,12 @@ class MemberDetailsController extends GetxController {
   }
 
   bool isEmpty() {
-    return memberName.value == "" &&
-            email.value == "" &&
-            phoneNum.value == "" &&
-            links == "" &&
-            location == "" &&
-            education == ""
+    return memberName.value.text == "" &&
+            email.value.text == "" &&
+            phoneNum.value.text == "" &&
+            links.text == "" &&
+            location.text == "" &&
+            education.text == ""
         ? true
         : false;
   }

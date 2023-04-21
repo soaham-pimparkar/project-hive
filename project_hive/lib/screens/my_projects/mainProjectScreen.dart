@@ -12,7 +12,6 @@ class StudentProjectView extends StatelessWidget {
   Widget build(BuildContext context) {
     print("In StudentProjectView");
     double heightMax = MediaQuery.of(context).size.height;
-    double widthMax = MediaQuery.of(context).size.width;
     return FutureBuilder<List<Map<dynamic, dynamic>>>(
       future: databaseObj.readSelectedProjects(useUid: uid, context: context),
       builder: (context, snapshot) {

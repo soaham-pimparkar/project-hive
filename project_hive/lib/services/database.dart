@@ -1,4 +1,5 @@
-import 'dart:html';
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:project_hive/globals/widgets.dart';
@@ -83,7 +84,7 @@ class database {
           applications.add(Map<String, dynamic>.from(t1.data()!));
         }
       }
-      print("In function: $applications");
+      log("In function: $applications");
       return applications;
     } catch (e) {
       showSnackBar(context, e.toString());
@@ -94,7 +95,7 @@ class database {
   Future<void> makeNewApplication(Map<String, dynamic> data,
       BuildContext context, String projectUid) async {
     String applicantUid = await _auth.getUserUid(context: context);
-    String applicationUid = Uuid().v4();
+    String applicationUid = const Uuid().v4();
 
     await _firestore.doc("projects/$projectUid").update({
       "receivedApplications": FieldValue.arrayUnion([applicationUid])
@@ -117,7 +118,7 @@ class database {
       if (t1.exists && t1.data() != null) {
         applications.add(Map<String, dynamic>.from(t1.data()!));
       }
-      print("In function: $applications");
+      log("In function: $applications");
       return applications;
     } catch (e) {
       showSnackBar(context, e.toString());

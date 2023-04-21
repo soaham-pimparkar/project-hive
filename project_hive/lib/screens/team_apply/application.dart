@@ -13,8 +13,8 @@ class TeamApplyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // ApplicationModel _application = ApplicationModel();
     ApplicationController controller_ = ApplicationController();
-    print("Controller: $controller_");
-    print("Initial Team Size: ${controller_.teamSize.value}");
+    log("Controller: $controller_");
+    log("Initial Team Size: ${controller_.teamSize.value}");
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -29,8 +29,7 @@ class TeamApplyPage extends StatelessWidget {
                     onEditingComplete: () {
                       controller_.updateTeamSize(
                           int.parse(controller_.teamMemberSize.text));
-                      print(
-                          "Team Member Value updated ${controller_.teamSize.value}");
+                      log("Team Member Value updated ${controller_.teamSize.value}");
                     },
                     controller: controller_.teamMemberSize,
                   ),
@@ -47,7 +46,7 @@ class TeamApplyPage extends StatelessWidget {
             ),
             // GetBuilder<ApplicationController>(
             //   builder: (controller_) {
-            //     print(":::: ${controller_.teamSize.value}");
+            //     log(":::: ${controller_.teamSize.value}");
             //     return SizedBox(
             //       height: MediaQuery.of(context).size.height * 0.6,
             //       child: MyTabBar(
@@ -70,17 +69,17 @@ class TeamApplyPage extends StatelessWidget {
               children: [
                 ElevatedButton(
                     onPressed: () {
-                      print(controller_.toJson());
+                      log(controller_.toJson());
                     },
-                    child: Text("Submit")),
-                Spacer(),
+                    child: const Text("Test")),
+                const Spacer(),
                 ElevatedButton(
                     onPressed: () {
                       databaseObj.makeNewApplication(
                           controller_.toMap(), context, uid);
-                      print("Done");
+                      log("Done");
                     },
-                    child: Text("Submit")),
+                    child: const Text("Submit")),
               ],
             )
           ],
@@ -94,7 +93,7 @@ class MyTabBar extends StatefulWidget {
   final ApplicationController controller;
   final int tabs;
   MyTabBar({super.key, required this.controller, required this.tabs}) {
-    print("MyTabBar constructor called");
+    log("MyTabBar constructor called");
   }
   @override
   _MyTabBarState createState() => _MyTabBarState();
@@ -175,7 +174,7 @@ class _MyTabBarState extends State<MyTabBar> with TickerProviderStateMixin {
                       controller: memberController.location,
                       value: "Location: ",
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -190,8 +189,7 @@ class _MyTabBarState extends State<MyTabBar> with TickerProviderStateMixin {
                         ElevatedButton(
                             onPressed: () {
                               onSubmit();
-                              print(
-                                  "Tabs: ${widget.tabs}\nIndex: ${tabController.index}");
+                              log("Tabs: ${widget.tabs}\nIndex: ${tabController.index}");
                               if (tabController.index + 1 < widget.tabs) {
                                 tabController.index += 1;
                               }
