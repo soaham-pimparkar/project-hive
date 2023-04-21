@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  static Color textColor = const Color.fromARGB(255, 161, 162, 162);
+  static Color textColorLight = Color.fromARGB(255, 204, 204, 204);
+  static Color appYellow = Color.fromARGB(249, 244, 177, 62);
+  static Color darkColor = const Color.fromARGB(255, 47, 47, 47);
+  static Color appBg = Color.fromARGB(255, 21, 21, 21);
   static Color appBarIconColor = const Color.fromRGBO(0, 0, 0, 0.8);
-  static Color appBarFillColor = const Color(0xCEC7C7);
+  static Color appBarFillColor = const Color(0x00cec7c7);
   static Color cardBackgroundColorLight =
       const Color.fromRGBO(227, 227, 227, 1);
   static Color cardBorderSideColorLight =

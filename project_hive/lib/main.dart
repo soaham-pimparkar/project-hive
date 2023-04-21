@@ -6,6 +6,7 @@ import 'package:project_hive/globals/testPage.dart';
 import 'package:project_hive/screens/authentication_view/sign_up_view.dart';
 import 'package:project_hive/screens/browse_projects_view/browse_projects_page.dart';
 import 'package:project_hive/screens/create_project_view/create_project_view.dart';
+import 'package:project_hive/screens/landing_page/Landing_Page.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
@@ -32,29 +33,16 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    //print('main.dart print called');
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppThemes.mainTheme,
-      home: TeamApplyPage(
-        uid: '1bf42975-0617-4358-ae85-3130d5a334d0',
-      ),
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', title: 'Home', page: () => testPage()),
+        GetPage(name: '/', title: 'Home', page: () => LandingPage()),
         GetPage(
-            name: '/signUpPage',
-            title: 'Sign Up',
-            page: () => SignUpView()),
+            name: '/signUpPage', title: 'Sign Up', page: () => SignUpView()),
       ],
-      // home: StudentProjectView(
-      //   uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
-      // ),
-      // home: StudentProjectView(
-      //   uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
-      // ),
-      //home: testPage(),
     );
   }
 }
