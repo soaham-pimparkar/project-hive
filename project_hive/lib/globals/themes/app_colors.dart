@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class AppColors {
   static Color textColor = const Color.fromARGB(255, 161, 162, 162);
-  static Color appYellow = const Color.fromARGB(250, 255, 203, 116);
+  static Color textColorLight = Color.fromARGB(255, 204, 204, 204);
+  static Color appYellow = Color.fromARGB(249, 244, 177, 62);
   static Color darkColor = const Color.fromARGB(255, 47, 47, 47);
   static Color appBg = Color.fromARGB(255, 21, 21, 21);
   static Color appBarIconColor = const Color.fromRGBO(0, 0, 0, 0.8);

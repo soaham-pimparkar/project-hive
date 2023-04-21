@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    //print('main.dart print called');
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -79,13 +78,6 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: '/application', title: 'Apply', page: () => TeamApplyPage()),
       ],
-      // home: StudentProjectView(
-      //   uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
-      // ),
-      // home: StudentProjectView(
-      //   uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
-      // ),
-      //home: testPage(),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:project_hive/globals/appBar.dart';
 import 'package:project_hive/globals/widgets.dart';
 import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/screens/authentication_view/sign_up_view.dart';
+import 'package:project_hive/screens/landing_page/Landing_Page.dart';
 import 'package:project_hive/services/authentication.dart';
 import 'package:project_hive/services/database.dart';
 import 'package:uuid/uuid.dart';
@@ -20,16 +21,7 @@ class LandingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (_auth.currentUser != null) {
-      return Scaffold(
-          appBar: CustomAppBar(),
-          body: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [],
-            ),
-          ));
+      return LandingPage();
     } else {
       return SignUpView();
     }
