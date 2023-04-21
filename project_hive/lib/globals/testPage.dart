@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_hive/models/company_employee_model.dart';
 import 'package:project_hive/models/project_model.dart';
 import 'package:project_hive/models/student_model.dart';
-import 'package:project_hive/screens/profile_view/profile.dart';
+import 'package:project_hive/screens/profile_view/my_profile.dart';
 import 'package:project_hive/services/authentication.dart';
 import 'package:project_hive/services/database.dart';
 import 'package:uuid/uuid.dart';
@@ -118,7 +118,7 @@ class testPage extends StatelessWidget {
                 // Spacer(),
                 FilledButton(
                     onPressed: () {
-                      Get.to(profileView());
+                      //Get.to(myProfileView());
                     },
                     child: Text('log in')),
                 Spacer(),

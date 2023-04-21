@@ -1,5 +1,52 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+
+class ApplicationController extends GetxController {
+  String? accountTypeCtr;
+  var teamSize = 2.obs;
+  final teamMemberSize = TextEditingController();
+  final teamDetails = TextEditingController();
+  final appeal = TextEditingController();
+  final queries = TextEditingController();
+  final List<Map<String, dynamic>> memberInfo = [];
+
+  Map<String, dynamic> toMap() {
+    return {
+      'teamSize': teamMemberSize.text,
+      'teamDetails': teamDetails.text,
+      'appeal': appeal.text,
+      'queries': queries.text,
+      'memberInfo': memberInfo,
+    };
+  }
+
+  String toJson() => jsonEncode(toMap());
+}
+
+class MemberDetailsController extends GetxController {
+  final memberName = TextEditingController();
+  final email = TextEditingController();
+  final phoneNum = TextEditingController();
+  final links = TextEditingController();
+  final location = TextEditingController();
+  final education = TextEditingController();
+
+  Map<String, dynamic> toMap() {
+    return {
+      'memberName': memberName.text,
+      'email': email.text,
+      'phoneNum': phoneNum.text,
+      'links': links.text,
+      'location': location.text,
+      'education': education.text,
+    };
+  }
+
+  String toJson() => jsonEncode(toMap());
+}
 
 class userInputController extends GetxController {
   String? accountTypeCtr;

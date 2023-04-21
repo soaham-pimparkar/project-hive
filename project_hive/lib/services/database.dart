@@ -53,6 +53,8 @@ class database {
     }
   }
 
+  
+
   //change user details
 
   //create project
@@ -174,6 +176,25 @@ class database {
         if (t1.exists && t1.data() != null) {
           applications.add(Map<String, dynamic>.from(t1.data()!));
         }
+      }
+      print("In function: $applications");
+      return applications;
+    } catch (e) {
+      showSnackBar(context, e.toString());
+      return [];
+    }
+  }
+
+  Future<List<Map<dynamic, dynamic>>> getProjectDetails({
+    required String useUid,
+    required BuildContext context,
+  }) async {
+    List<Map<dynamic, dynamic>> applications = [];
+    try {
+      DocumentSnapshot<Map<String, dynamic>> t1 =
+          await _firestore.doc("/projects/$useUid").get();
+      if (t1.exists && t1.data() != null) {
+        applications.add(Map<String, dynamic>.from(t1.data()!));
       }
       print("In function: $applications");
       return applications;

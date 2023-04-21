@@ -9,7 +9,8 @@ import 'package:project_hive/screens/create_project_view/create_project_view.dar
 // import 'package:project_hive/screens/create_project_view/create_project_no_access.dart';
 // import 'package:project_hive/screens/create_project_view/create_project_view.dart';
 import 'package:project_hive/screens/my_projects/mainProjectScreen.dart';
-import 'package:project_hive/screens/profile_view/profile.dart';
+import 'package:project_hive/screens/team_apply/application.dart';
+import 'package:project_hive/screens/profile_view/my_profile.dart';
 import 'firebase_options.dart';
 
 //other pub.dev packages
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
       // home: StudentProjectView(
       //   uid: 's2vRXXzhYmRnlppitIrsammvMhg2',
       // ),
-      home: testPage(),
+      home: TeamApplyPage(),
     );
   }
 }
